@@ -1,0 +1,16 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#FFF8F1"/>
+  <circle cx="120" cy="88" r="96" fill="#F0B59D" fill-opacity="0.45"/>
+  <circle cx="1080" cy="108" r="88" fill="#FFE0A3" fill-opacity="0.6"/>
+  <circle cx="1100" cy="556" r="80" fill="#BDDFA8" fill-opacity="0.5"/>
+  <rect x="60" y="60" width="1080" height="510" rx="30" fill="#FFF1E8" stroke="#F0B59D" stroke-width="4"/>
+  <text x="110" y="278" fill="#B20D0D" font-family="Anton, Bebas Neue, Impact, sans-serif" font-size="172" font-weight="700" letter-spacing="4">HOLY PAV</text>
+  <text x="110" y="352" fill="#3D281F" font-family="Sora, Avenir Next, Trebuchet MS, sans-serif" font-size="36" font-weight="600">Bengaluru Pav Kitchen • Bold Mumbai-style street soul</text>
+  <text x="110" y="412" fill="#4F8D2F" font-family="Sora, Avenir Next, Trebuchet MS, sans-serif" font-size="28" font-weight="700">Menu • Cart • Wishlist • Checkout</text>
+  <ellipse cx="950" cy="184" rx="70" ry="20" fill="#FFE0A3" stroke="#B20D0D" stroke-width="6"/>
+  <rect x="880" y="220" width="150" height="60" rx="28" fill="#E49B33" stroke="#B20D0D" stroke-width="5"/>
+  <rect x="872" y="276" width="166" height="50" rx="25" fill="#FFF0CF" stroke="#B20D0D" stroke-width="5"/>
+  <rect x="890" y="286" width="130" height="16" rx="8" fill="#C0392B"/>
+  <rect x="880" y="320" width="150" height="52" rx="25" fill="#E39A54" stroke="#B20D0D" stroke-width="5"/>
+  <path d="M1052 246C1062 246 1069 253 1068 263L1060 380C1059 389 1052 396 1044 396C1036 396 1029 389 1030 380L1038 263C1039 253 1042 246 1052 246Z" fill="#65A63A" stroke="#326120" stroke-width="4"/>
+</svg>

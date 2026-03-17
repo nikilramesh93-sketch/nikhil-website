@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7efe6;
+  --foreground: #312019;
+  --paper: #fff8f1;
+  --paper-soft: #f3e2d0;
+  --line: #e5ceb7;
+  --line-strong: #d8b698;
+
+  --ink-strong: #2b1912;
+  --ink: #3d281f;
+  --ink-soft: #4f3429;
+  --ink-muted: #6f5344;
+  --ink-faint: #8e7360;
+
+  --brand-red: #b20d0d;
+  --brand-red-strong: #860000;
+  --brand-red-soft: #f0b59d;
+  --brand-red-mist: #fff0e8;
+  --brand-gold: #f2a52f;
+  --brand-green: #4f8d2f;
+
+  --font-manrope: "Sora", "Avenir Next", "Trebuchet MS", "Noto Sans", sans-serif;
+  --font-playfair: "Anton", "Bebas Neue", "Haettenschweiler", "Impact", "Arial Narrow Bold", sans-serif;
+
+  /* Override commonly used Tailwind tokens to make the existing UI inherit the brand palette. */
+  --color-slate-50: #faf1e8;
+  --color-slate-100: #f1dfce;
+  --color-slate-200: #e5ceb7;
+  --color-slate-300: #d8b698;
+  --color-slate-400: #b59176;
+  --color-slate-500: #92705a;
+  --color-slate-600: #735341;
+  --color-slate-700: #583b2d;
+  --color-slate-800: #3e281f;
+  --color-slate-900: #2b1912;
+
+  --color-orange-50: #fff1e8;
+  --color-orange-100: #ffdaca;
+  --color-orange-200: #f0b59d;
+  --color-orange-300: #e5906e;
+  --color-orange-400: #d76b48;
+  --color-orange-500: #cb4b2a;
+  --color-orange-600: #b20d0d;
+  --color-orange-700: #860000;
+  --color-orange-800: #650000;
+  --color-orange-900: #420000;
+
+  --color-rose-50: #fff1ee;
+  --color-rose-200: #f1bbb0;
+  --color-rose-600: #a71a1a;
+  --color-rose-700: #8e0000;
+
+  --color-emerald-50: #edf8e5;
+  --color-emerald-100: #daefcd;
+  --color-emerald-200: #bddfa8;
+  --color-emerald-700: #3f6f27;
+  --color-emerald-800: #325b1f;
+  --color-emerald-900: #244215;
+
+  --color-lime-50: #f4f9e9;
+  --color-lime-100: #e4f2ca;
+  --color-red-100: #ffd4c6;
+  --color-yellow-100: #ffe8a4;
+  --color-amber-50: #fff2cd;
+  --color-amber-100: #ffe0a3;
+  --color-fuchsia-100: #ffd6cd;
+  --color-cyan-100: #d4f3dd;
+  --color-blue-50: #e7f7eb;
+  --color-pink-100: #ffd9cf;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-playfair);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% -5%, rgb(178 13 13 / 14%) 0%, transparent 42%),
+    radial-gradient(circle at 86% 12%, rgb(242 165 47 / 17%) 0%, transparent 38%),
+    radial-gradient(circle at 94% 86%, rgb(79 141 47 / 10%) 0%, transparent 32%),
+    linear-gradient(180deg, #fff5ee 0%, #f7efe6 44%, #f1e2d2 100%);
+  color: var(--ink);
+  font-family: var(--font-manrope), sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-playfair), serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Keep text readable on dark CTA buttons across all interaction states. */
+button[class*="bg-slate-900"],
+a[class*="bg-slate-900"],
+[role="button"][class*="bg-slate-900"] {
+  color: #ffffff;
+}
+
+button[class*="bg-slate-900"]:hover,
+button[class*="bg-slate-900"]:active,
+button[class*="bg-slate-900"]:focus-visible,
+a[class*="bg-slate-900"]:hover,
+a[class*="bg-slate-900"]:active,
+a[class*="bg-slate-900"]:focus-visible,
+[role="button"][class*="bg-slate-900"]:hover,
+[role="button"][class*="bg-slate-900"]:active,
+[role="button"][class*="bg-slate-900"]:focus-visible {
+  color: #ffffff;
+}
+
+input,
+textarea,
+select {
+  background: #fffdf9;
+}
+
+@keyframes brandRiseIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main > div > section,
+  main > div > article,
+  main > div > aside,
+  main > section,
+  main > article,
+  main > aside,
+  main > form {
+    animation: brandRiseIn 0.55s ease both;
+  }
+
+  main > div > section:nth-of-type(2),
+  main > div > article:nth-of-type(2),
+  main > section:nth-of-type(2),
+  main > article:nth-of-type(2) {
+    animation-delay: 0.08s;
+  }
+
+  main > div > section:nth-of-type(3),
+  main > div > article:nth-of-type(3),
+  main > section:nth-of-type(3),
+  main > article:nth-of-type(3) {
+    animation-delay: 0.14s;
+  }
+}

@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="44" fill="#FFF8F1"/>
+  <rect x="16" y="16" width="224" height="224" rx="36" fill="#FFF1E8" stroke="#F0B59D" stroke-width="4"/>
+  <text x="42" y="162" fill="#B20D0D" font-family="Anton, Bebas Neue, Impact, sans-serif" font-size="118" font-weight="700">HP</text>
+  <path d="M195 40C207 40 215 48 214 59L205 166C204 179 195 188 185 188C175 188 167 178 168 166L177 59C178 48 183 40 195 40Z" fill="#65A63A" stroke="#326120" stroke-width="4"/>
+  <path d="M189 24C199 16 216 18 226 29C211 34 205 42 201 52C198 44 194 36 189 24Z" fill="#74B445" stroke="#326120" stroke-width="4"/>
+</svg>

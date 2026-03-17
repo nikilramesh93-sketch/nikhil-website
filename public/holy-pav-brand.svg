@@ -1,0 +1,41 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="#FFF8F1"/>
+
+  <g opacity="0.2">
+    <circle cx="174" cy="178" r="118" fill="#F0B59D"/>
+    <circle cx="878" cy="220" r="98" fill="#FFE0A3"/>
+    <circle cx="900" cy="852" r="86" fill="#BDDFA8"/>
+  </g>
+
+  <g fill="#B20D0D" font-family="Anton, Bebas Neue, Impact, sans-serif" font-size="248" font-weight="700" letter-spacing="6">
+    <text x="88" y="410">HOLY</text>
+    <text x="88" y="744">PAV</text>
+  </g>
+
+  <g transform="translate(420 400)">
+    <ellipse cx="110" cy="35" rx="88" ry="24" fill="#FDE2A9" stroke="#B20D0D" stroke-width="8"/>
+    <path d="M10 130C10 82 48 44 96 44H128C176 44 214 82 214 130V138H10V130Z" fill="#E49B33"/>
+    <path d="M4 152H220C220 184 192 210 158 210H66C32 210 4 184 4 152Z" fill="#FFF0CF"/>
+    <rect x="20" y="138" width="184" height="26" rx="13" fill="#C0392B"/>
+    <path d="M22 159H202L182 178H42L22 159Z" fill="#F4BC3F"/>
+    <path d="M8 203H216C210 236 183 258 150 258H74C41 258 14 236 8 203Z" fill="#E39A54"/>
+    <path d="M10 132C10 82 48 44 96 44H128C176 44 214 82 214 132" stroke="#B20D0D" stroke-width="6"/>
+    <path d="M4 152H220C220 184 192 210 158 210H66C32 210 4 184 4 152Z" stroke="#B20D0D" stroke-width="6"/>
+    <path d="M8 203H216C210 236 183 258 150 258H74C41 258 14 236 8 203Z" stroke="#B20D0D" stroke-width="6"/>
+  </g>
+
+  <g transform="translate(890 610)">
+    <path d="M20 4C37 4 48 16 47 33L34 230C33 250 20 265 4 265C-10 265 -22 248 -20 230L-7 33C-6 16 3 4 20 4Z" fill="#65A63A" stroke="#326120" stroke-width="7"/>
+    <path d="M13 -22C29 -36 57 -34 72 -17C49 -10 39 2 33 18C29 5 22 -6 13 -22Z" fill="#74B445" stroke="#326120" stroke-width="7"/>
+  </g>
+
+  <g transform="translate(842 836)" fill="#4F8D2F">
+    <circle cx="48" cy="48" r="34"/>
+    <circle cx="10" cy="45" r="10"/>
+    <circle cx="88" cy="44" r="11"/>
+    <circle cx="35" cy="10" r="10"/>
+    <circle cx="63" cy="12" r="9"/>
+    <circle cx="24" cy="79" r="9"/>
+    <circle cx="73" cy="78" r="8"/>
+  </g>
+</svg>
