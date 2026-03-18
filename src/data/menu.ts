@@ -118,4 +118,6 @@ export const menuItems: MenuItem[] = [
   },
 ];
 
-export const featuredMenuIds = ["classic-vada-pav", "pav-bhaji", "misal-pav", "cheese-vada-pav"];
+export const hiddenMenuSectionIds = ["grilled-vada-pav", "schezwan-vada-pav", "cheese-vada-pav"];
+
+export const featuredMenuIds = ["classic-vada-pav", "pav-bhaji", "misal-pav"];

@@ -41,7 +41,10 @@ export interface Dictionary {
     primaryCta: string;
     secondaryCta: string;
     trustTitle: string;
-    trustCards: string[];
+    trustCards: Array<{
+      title: string;
+      body: string;
+    }>;
     bestsellerTitle: string;
     seoDescription: string;
   };
@@ -171,9 +174,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
       secondaryCta: "Order now",
       trustTitle: "Why people choose Holy Pav",
       trustCards: [
-        "Fresh pav baked daily in small batches.",
-        "Fast delivery across key Bengaluru zones.",
-        "Balanced spice profiles with vegetarian and protein-rich choices.",
+        {
+          title: "Premium Quality",
+          body: "Everything is made fresh daily using high-quality ingredients from trusted sources.",
+        },
+        {
+          title: "Authentic",
+          body: "Accurate Mumbai street recipes that replicate the actual taste of Mumbai street food.",
+        },
+        {
+          title: "Hygiene",
+          body: "We follow high standards which include protective gear and regular cleaning and disinfection.",
+        },
       ],
       bestsellerTitle: "Top picks",
       seoDescription:
@@ -309,9 +321,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
       secondaryCta: "ಇದೀಗ ಆರ್ಡರ್ ಮಾಡಿ",
       trustTitle: "ಜನರು ಹೋಲಿ ಪಾವ್ ಅನ್ನು ಏಕೆ ಆಯ್ಕೆ ಮಾಡುತ್ತಾರೆ",
       trustCards: [
-        "ಪ್ರತಿದಿನ ತಾಜಾ ಪಾವ್ ಸಣ್ಣ ಬ್ಯಾಚ್‌ಗಳಲ್ಲಿ ತಯಾರಿಸಲಾಗುತ್ತದೆ.",
-        "ಬೆಂಗಳೂರು ಪ್ರಮುಖ ಪ್ರದೇಶಗಳಿಗೆ ವೇಗವಾದ ಡೆಲಿವರಿ.",
-        "ಸಮತೋಲನದ ಮಸಾಲೆ ರುಚಿ ಮತ್ತು ವೆಜ್/ಪ್ರೋಟೀನ್ ಆಯ್ಕೆಗಳು.",
+        {
+          title: "ಪ್ರಿಮಿಯಂ ಗುಣಮಟ್ಟ",
+          body: "ಎಲ್ಲವನ್ನೂ ಪ್ರತಿದಿನ ಹೊಸದಾಗಿ, ನಂಬಿಗಸ್ತ ಮೂಲಗಳಿಂದ ಬಂದ ಉತ್ತಮ ಪದಾರ್ಥಗಳಿಂದ ತಯಾರಿಸಲಾಗುತ್ತದೆ.",
+        },
+        {
+          title: "ಅಥೆಂಟಿಕ್",
+          body: "ಮುಂಬೈ ಸ್ಟ್ರೀಟ್ ಫುಡ್‌ನ ನಿಜವಾದ ರುಚಿಯನ್ನು ಮರಳಿ ತರುವ ನೈಜ ರೆಸಿಪಿಗಳನ್ನು ನಾವು ಅನುಸರಿಸುತ್ತೇವೆ.",
+        },
+        {
+          title: "ಹೈಜೀನ್",
+          body: "ರಕ್ಷಣಾತ್ಮಕ ಉಡುಪು, ನಿಯಮಿತ ಸ್ವಚ್ಛತೆ ಮತ್ತು ಡಿಸ್ಇನ್ಫೆಕ್ಷನ್ ಸೇರಿದಂತೆ ಕಠಿಣ ಸ್ವಚ್ಛತಾ ಮಾನದಂಡಗಳನ್ನು ಪಾಲಿಸುತ್ತೇವೆ.",
+        },
       ],
       bestsellerTitle: "ಜನಪ್ರಿಯ ಆಯ್ಕೆಗಳು",
       seoDescription:

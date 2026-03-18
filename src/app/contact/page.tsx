@@ -13,12 +13,8 @@ export default function ContactPage() {
 
         <dl className="mt-8 space-y-6 text-sm text-slate-700">
           <div>
-            <dt className="font-semibold text-slate-900">{dictionary.contact.addressLabel}</dt>
-            <dd className="mt-1">12, 100 Feet Road, Indiranagar, Bengaluru 560038</dd>
-          </div>
-          <div>
             <dt className="font-semibold text-slate-900">{dictionary.contact.phoneLabel}</dt>
-            <dd className="mt-1">+91 98765 43210</dd>
+            <dd className="mt-1">+91 7738994768</dd>
           </div>
           <div>
             <dt className="font-semibold text-slate-900">{dictionary.contact.timingLabel}</dt>
@@ -26,7 +22,7 @@ export default function ContactPage() {
           </div>
           <div>
             <dt className="font-semibold text-slate-900">{dictionary.contact.corporateLabel}</dt>
-            <dd className="mt-1">corporate@holypav.in</dd>
+            <dd className="mt-1">nikil@holypav.com</dd>
           </div>
         </dl>
       </section>
@@ -40,7 +36,7 @@ export default function ContactPage() {
         </p>
 
         <a
-          href="mailto:corporate@holypav.in"
+          href="mailto:nikil@holypav.com"
           className="mt-6 inline-flex rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700"
         >
           Email Holy Pav

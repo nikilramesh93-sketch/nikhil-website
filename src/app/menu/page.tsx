@@ -4,17 +4,18 @@ import { useEffect } from "react";
 
 import { MenuCard } from "@/components/menu/menu-card";
 import { useApp } from "@/components/providers/app-provider";
-import { menuItems } from "@/data/menu";
+import { hiddenMenuSectionIds, menuItems } from "@/data/menu";
 import { trackEvent } from "@/lib/analytics";
 
 export default function MenuPage() {
   const { dictionary, locale } = useApp();
+  const visibleMenuItems = menuItems.filter((item) => !hiddenMenuSectionIds.includes(item.id));
 
   useEffect(() => {
     trackEvent("view_menu");
   }, []);
 
-  const groupedItems = menuItems.reduce<Record<string, typeof menuItems>>((acc, item) => {
+  const groupedItems = visibleMenuItems.reduce<Record<string, typeof menuItems>>((acc, item) => {
     const key = locale === "kn" ? item.categoryKn : item.category;
 
     if (!acc[key]) {

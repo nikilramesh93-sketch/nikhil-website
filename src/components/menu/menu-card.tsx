@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 import type { MenuItem } from "@/types/commerce";
-import { formatCurrency } from "@/lib/format";
 import { trackEvent } from "@/lib/analytics";
 import { useApp } from "@/components/providers/app-provider";
 
@@ -51,8 +50,7 @@ export function MenuCard({ item }: MenuCardProps) {
           </p>
         </div>
 
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
-          <p className="text-lg font-semibold text-slate-900">{formatCurrency(item.price)}</p>
+        <div className="mt-4 border-t border-slate-100 pt-4">
           <p className="text-right text-xs text-slate-500">
             {dictionary.menu.availabilityLabel}:{" "}
             {item.isAvailable ? dictionary.menu.inStock : dictionary.menu.outOfStock}
