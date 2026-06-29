@@ -3,76 +3,73 @@
 import Image from "next/image";
 
 import type { MenuItem } from "@/types/commerce";
-import { trackEvent } from "@/lib/analytics";
+import { formatCurrency } from "@/lib/format";
 import { useApp } from "@/components/providers/app-provider";
 
 interface MenuCardProps {
   item: MenuItem;
+  featured?: boolean;
 }
 
-export function MenuCard({ item }: MenuCardProps) {
-  const { dictionary, locale, addToCart, addToWishlist } = useApp();
+export function MenuCard({ item, featured = false }: MenuCardProps) {
+  const { dictionary, locale } = useApp();
   const itemName = locale === "kn" ? item.nameKn : item.name;
   const itemDescription = locale === "kn" ? item.descriptionKn : item.description;
-
-  const onAddToCart = () => {
-    addToCart(item);
-    trackEvent("add_to_cart", { itemId: item.id, price: item.price });
-  };
-
-  const onWishlist = () => {
-    addToWishlist(item);
-  };
+  const isVeg = item.dietaryTag === "veg";
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className={`relative h-44 overflow-hidden bg-gradient-to-r ${item.accent}`}>
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-30px_rgba(31,20,16,0.25)]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--paper-soft)]">
         <Image
           src={item.image}
           alt={itemName}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
-        <div className="absolute left-5 top-5 inline-flex rounded-full border border-white/70 bg-white/85 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-slate-700">
-          {item.dietaryTag === "veg" ? dictionary.common.veg : dictionary.common.nonVeg}
+        <div className="absolute left-3 top-3 flex items-center gap-2">
+          <span
+            className={`flex h-4 w-4 items-center justify-center rounded-[3px] border-[1.5px] bg-white ${
+              isVeg ? "border-[#3F7B2F]" : "border-[#8E1B1B]"
+            }`}
+            aria-label={isVeg ? "Vegetarian" : "Non-vegetarian"}
+          >
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${
+                isVeg ? "bg-[#3F7B2F]" : "bg-[#8E1B1B]"
+              }`}
+            />
+          </span>
+          {featured && (
+            <span className="rounded-full bg-[var(--brand-gold)] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-strong)]">
+              Signature
+            </span>
+          )}
         </div>
+        {!item.isAvailable && (
+          <div className="absolute inset-0 flex items-center justify-center bg-[var(--ink-strong)]/55 backdrop-blur-[1px]">
+            <span className="rounded-full bg-[var(--paper)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-strong)]">
+              {dictionary.menu.outOfStock}
+            </span>
+          </div>
+        )}
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <div className="min-h-[7.5rem]">
-          <h3 className="min-h-[4rem] font-display text-3xl leading-[0.9] text-slate-900 [display:-webkit-box] overflow-hidden [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
-            {itemName}
-          </h3>
-          <p className="mt-2 min-h-[3.5rem] text-sm leading-6 text-slate-600 [display:-webkit-box] overflow-hidden [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
-            {itemDescription}
-          </p>
-        </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="font-display text-[26px] leading-[0.95] text-[var(--ink-strong)] sm:text-[28px]">
+          {itemName}
+        </h3>
+        <p className="mt-2.5 line-clamp-2 text-[13px] leading-[1.55] text-[var(--ink-muted)]">
+          {itemDescription}
+        </p>
 
-        <div className="mt-4 border-t border-slate-100 pt-4">
-          <p className="text-right text-xs text-slate-500">
-            {dictionary.menu.availabilityLabel}:{" "}
-            {item.isAvailable ? dictionary.menu.inStock : dictionary.menu.outOfStock}
+        <div className="mt-auto flex items-end justify-between gap-3 pt-5">
+          <p className="text-[20px] font-semibold leading-none text-[var(--ink-strong)]">
+            {formatCurrency(item.price)}
           </p>
-        </div>
-
-        <div className="mt-4 grid gap-2">
-          <button
-            type="button"
-            onClick={onAddToCart}
-            disabled={!item.isAvailable}
-            className="w-full rounded-full border border-orange-500 bg-slate-900 px-4 py-2 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300"
-          >
-            {item.isAvailable ? dictionary.common.addToCart : dictionary.common.unavailable}
-          </button>
-          <button
-            type="button"
-            onClick={onWishlist}
-            className="w-full rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.08em] text-slate-700 transition hover:bg-slate-100"
-          >
-            {dictionary.common.addToWishlist}
-          </button>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-faint)]">
+            {isVeg ? dictionary.common.veg : dictionary.common.nonVeg}
+          </p>
         </div>
       </div>
     </article>

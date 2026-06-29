@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 
+import { Button } from "@/components/ui/button";
 import { useApp } from "@/components/providers/app-provider";
 
 interface PartnerFormState {
@@ -33,14 +34,25 @@ const initialFormState: PartnerFormState = {
   city: "Bengaluru",
 };
 
+const inputBase =
+  "w-full rounded-xl border border-[var(--line-strong)] bg-[var(--paper)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors duration-200 focus:border-[var(--brand-red)]";
+
+const labelBase =
+  "space-y-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-muted)]";
+
 export default function PartnersPage() {
   const { dictionary } = useApp();
   const [form, setForm] = useState<PartnerFormState>(initialFormState);
   const [affiliateCode, setAffiliateCode] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setAffiliateCode(createAffiliateCode(form.fullName));
+    setIsSubmitting(true);
+    window.setTimeout(() => {
+      setAffiliateCode(createAffiliateCode(form.fullName));
+      setIsSubmitting(false);
+    }, 600);
   };
 
   const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -49,153 +61,180 @@ export default function PartnersPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <section className="rounded-3xl border border-orange-200 bg-gradient-to-br from-orange-100 via-amber-50 to-white p-7 sm:p-10">
-        <p className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-orange-700">
+    <div className="space-y-20">
+      <section className="max-w-3xl">
+        <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
+          <span className="h-px w-6 bg-[var(--brand-red)]" />
           {dictionary.partners.introBadge}
         </p>
-        <h1 className="mt-4 text-4xl font-semibold text-slate-900">
+        <h1 className="mt-6 font-display text-[44px] leading-[0.92] text-[var(--ink-strong)] sm:text-[60px] lg:text-[72px]">
           {dictionary.partners.title}
         </h1>
-        <p className="mt-3 max-w-3xl text-slate-700">{dictionary.partners.subtitle}</p>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--ink-muted)] sm:text-lg">
+          {dictionary.partners.subtitle}
+        </p>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-        <article className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold text-slate-900">
-            {dictionary.partners.benefitsTitle}
-          </h2>
-          <ul className="mt-4 space-y-3">
-            {dictionary.partners.benefits.map((benefit) => (
-              <li
-                key={benefit}
-                className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-700"
-              >
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </article>
+      <section className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <aside className="space-y-8">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+              {dictionary.partners.benefitsTitle}
+            </p>
+            <ul className="mt-6 space-y-6">
+              {dictionary.partners.benefits.map((benefit, index) => (
+                <li key={benefit} className="flex items-start gap-4">
+                  <span className="font-display text-[13px] tracking-[0.04em] text-[var(--brand-red)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="flex-1 text-[15px] leading-[1.6] text-[var(--ink)]">
+                    {benefit}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <article className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold text-slate-900">
-            {dictionary.partners.formTitle}
-          </h2>
+          <div className="rounded-2xl border border-[var(--line)] bg-[var(--brand-gold-soft)] p-6">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+              Sample code
+            </p>
+            <p className="mt-3 font-display text-2xl text-[var(--ink-strong)]">
+              HOLYPAV-RHEA4821
+            </p>
+            <p className="mt-3 text-[13px] leading-[1.55] text-[var(--ink-muted)]">
+              Every partner gets a unique code. Followers who use it get a discount; you get the tracking.
+            </p>
+          </div>
+        </aside>
 
-          <form className="mt-6 grid gap-4" onSubmit={onSubmit}>
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              {dictionary.partners.fullName}
-              <input
-                required
-                name="fullName"
-                value={form.fullName}
-                onChange={onChange}
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-              />
-            </label>
-
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              {dictionary.partners.email}
-              <input
-                required
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={onChange}
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-              />
-            </label>
-
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              {dictionary.partners.phone}
-              <input
-                required
-                name="phone"
-                value={form.phone}
-                onChange={onChange}
-                inputMode="numeric"
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-              />
-            </label>
-
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              {dictionary.partners.socialHandle}
-              <input
-                required
-                name="socialHandle"
-                value={form.socialHandle}
-                onChange={onChange}
-                placeholder="@yourhandle"
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-              />
-            </label>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="space-y-2 text-sm font-medium text-slate-700">
-                {dictionary.partners.platform}
-                <select
-                  required
-                  name="platform"
-                  value={form.platform}
-                  onChange={onChange}
-                  className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-                >
-                  <option value="">Select</option>
-                  <option value="instagram">Instagram</option>
-                  <option value="youtube">YouTube</option>
-                  <option value="x">X</option>
-                  <option value="facebook">Facebook</option>
-                </select>
-              </label>
-
-              <label className="space-y-2 text-sm font-medium text-slate-700">
-                {dictionary.partners.followers}
-                <input
-                  required
-                  name="followers"
-                  value={form.followers}
-                  onChange={onChange}
-                  inputMode="numeric"
-                  className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-                />
-              </label>
-            </div>
-
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              {dictionary.partners.city}
-              <input
-                required
-                name="city"
-                value={form.city}
-                onChange={onChange}
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-orange-400"
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="mt-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
-            >
-              {dictionary.partners.submit}
-            </button>
-          </form>
-
-          {affiliateCode && (
-            <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
-              <h3 className="text-lg font-semibold text-emerald-800">
+        <article className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 sm:p-10">
+          {affiliateCode ? (
+            <div className="space-y-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-red)]">
+                Welcome aboard
+              </p>
+              <h2 className="font-display text-[36px] leading-[0.95] text-[var(--ink-strong)] sm:text-[44px]">
                 {dictionary.partners.successTitle}
-              </h3>
-              <p className="mt-2 text-sm text-emerald-700">
+              </h2>
+              <p className="text-[15px] leading-[1.6] text-[var(--ink-muted)]">
                 {dictionary.partners.successBody}
               </p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-700">
-                {dictionary.partners.codeLabel}
+              <div className="mt-6 rounded-2xl border border-dashed border-[var(--brand-red)] bg-[var(--brand-red-mist)] p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-red)]">
+                  {dictionary.partners.codeLabel}
+                </p>
+                <p className="mt-3 font-display text-[28px] tracking-[0.04em] text-[var(--ink-strong)] sm:text-[32px]">
+                  {affiliateCode}
+                </p>
+              </div>
+              <p className="pt-2 text-[13px] text-[var(--ink-muted)]">
+                {dictionary.partners.note}
               </p>
-              <p className="mt-1 text-xl font-bold tracking-wide text-emerald-900">
-                {affiliateCode}
-              </p>
-              <p className="mt-3 text-sm text-emerald-700">{dictionary.partners.note}</p>
             </div>
+          ) : (
+            <>
+              <h2 className="font-display text-[28px] leading-tight text-[var(--ink-strong)] sm:text-[32px]">
+                {dictionary.partners.formTitle}
+              </h2>
+
+              <form className="mt-8 grid gap-5" onSubmit={onSubmit}>
+                <label className={labelBase}>
+                  {dictionary.partners.fullName}
+                  <input
+                    required
+                    name="fullName"
+                    value={form.fullName}
+                    onChange={onChange}
+                    className={inputBase}
+                  />
+                </label>
+
+                <label className={labelBase}>
+                  {dictionary.partners.email}
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={onChange}
+                    className={inputBase}
+                  />
+                </label>
+
+                <label className={labelBase}>
+                  {dictionary.partners.phone}
+                  <input
+                    required
+                    name="phone"
+                    value={form.phone}
+                    onChange={onChange}
+                    inputMode="numeric"
+                    className={inputBase}
+                  />
+                </label>
+
+                <label className={labelBase}>
+                  {dictionary.partners.socialHandle}
+                  <input
+                    required
+                    name="socialHandle"
+                    value={form.socialHandle}
+                    onChange={onChange}
+                    placeholder="@yourhandle"
+                    className={inputBase}
+                  />
+                </label>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <label className={labelBase}>
+                    {dictionary.partners.platform}
+                    <select
+                      required
+                      name="platform"
+                      value={form.platform}
+                      onChange={onChange}
+                      className={inputBase}
+                    >
+                      <option value="">Select</option>
+                      <option value="instagram">Instagram</option>
+                      <option value="youtube">YouTube</option>
+                      <option value="x">X</option>
+                      <option value="facebook">Facebook</option>
+                    </select>
+                  </label>
+
+                  <label className={labelBase}>
+                    {dictionary.partners.followers}
+                    <input
+                      required
+                      name="followers"
+                      value={form.followers}
+                      onChange={onChange}
+                      inputMode="numeric"
+                      className={inputBase}
+                    />
+                  </label>
+                </div>
+
+                <label className={labelBase}>
+                  {dictionary.partners.city}
+                  <input
+                    required
+                    name="city"
+                    value={form.city}
+                    onChange={onChange}
+                    className={inputBase}
+                  />
+                </label>
+
+                <div className="pt-2">
+                  <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Creating code…" : dictionary.partners.submit}
+                  </Button>
+                </div>
+              </form>
+            </>
           )}
         </article>
       </section>
