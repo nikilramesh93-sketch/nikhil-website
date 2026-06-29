@@ -7,89 +7,108 @@ import { usePathname } from "next/navigation";
 import { useApp } from "@/components/providers/app-provider";
 import { LOCALES } from "@/lib/i18n";
 
-function navClass(isActive: boolean): string {
+function navLinkClass(isActive: boolean): string {
+  const base =
+    "relative inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-200";
   if (isActive) {
-    return "rounded-full border border-orange-500 bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-sm";
+    return `${base} text-[var(--brand-red)]`;
   }
-
-  return "rounded-full border border-transparent px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-slate-300 hover:bg-slate-100";
+  return `${base} text-[var(--ink-soft)] hover:text-[var(--brand-red)]`;
 }
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const { locale, setLocale, dictionary, cartItems, wishlistItems } = useApp();
-
-  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const { locale, setLocale, dictionary } = useApp();
 
   const navItems = [
     { href: "/", label: dictionary.nav.home },
     { href: "/menu", label: dictionary.nav.menu },
-    { href: "/cart", label: `${dictionary.nav.cart} (${cartCount})` },
-    { href: "/wishlist", label: `${dictionary.nav.wishlist} (${wishlistItems.length})` },
-    { href: "/checkout", label: dictionary.nav.checkout },
+    { href: "/about", label: dictionary.nav.about },
     { href: "/partners", label: dictionary.nav.partners },
     { href: "/contact", label: dictionary.nav.contact },
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link href="/" className="inline-flex items-center gap-3">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-orange-200 bg-white shadow-sm">
-              <Image
-                src="/hero-logo.png"
-                alt="Holy Pav logo"
-                width={1024}
-                height={1024}
-                className="h-10 w-10 object-contain"
-                priority
-              />
+    <header className="sticky top-0 z-40 border-b border-[var(--line)] bg-[var(--background)]/85 backdrop-blur-md">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-5 py-3.5 sm:px-6 sm:py-4 lg:px-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2.5 transition-opacity hover:opacity-80"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[var(--brand-red)] shadow-sm sm:h-10 sm:w-10">
+            <Image
+              src="/hero-logo.png"
+              alt="Holy Pav logo"
+              width={1024}
+              height={1024}
+              className="h-7 w-7 object-contain sm:h-8 sm:w-8"
+              priority
+            />
+          </span>
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-xl tracking-[0.02em] text-[var(--ink-strong)] sm:text-2xl">
+              HOLY PAV
             </span>
-            <span>
-              <span className="block font-display text-4xl leading-[0.85] tracking-[0.02em] text-orange-700">
-                HOLY PAV
-              </span>
-              <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-600">
-                {dictionary.brand.city}
-              </span>
+            <span className="mt-0.5 hidden text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)] sm:block">
+              {dictionary.brand.city}
             </span>
-          </Link>
+          </span>
+        </Link>
 
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/70 p-1">
-            {LOCALES.map((value) => {
-              const isActive = value === locale;
-              return (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setLocale(value)}
-                  className={
-                    isActive
-                      ? "rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-white"
-                      : "rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-slate-600"
-                  }
-                >
-                  {value === "en" ? "EN" : "ಕನ್ನಡ"}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <nav className="flex flex-wrap gap-2">
+        <nav className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => {
             const isActive =
               item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-
             return (
-              <Link key={item.href} href={item.href} className={navClass(isActive)}>
+              <Link key={item.href} href={item.href} className={navLinkClass(isActive)}>
                 {item.label}
+                {isActive && (
+                  <span className="absolute -bottom-1.5 left-0 h-[1.5px] w-full bg-[var(--brand-red)]" />
+                )}
               </Link>
             );
           })}
         </nav>
+
+        <div className="inline-flex items-center gap-0.5 rounded-full border border-[var(--line-strong)] bg-[var(--paper)]/60 p-0.5">
+          {LOCALES.map((value) => {
+            const isActive = value === locale;
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setLocale(value)}
+                aria-label={`Switch language to ${value === "en" ? "English" : "Kannada"}`}
+                className={
+                  isActive
+                    ? "rounded-full bg-[var(--ink-strong)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--paper)] transition-colors"
+                    : "rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--ink-muted)] transition-colors hover:text-[var(--ink-strong)]"
+                }
+              >
+                {value === "en" ? "EN" : "ಕ"}
+              </button>
+            );
+          })}
+        </div>
       </div>
+
+      <nav className="border-t border-[var(--line)] md:hidden">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-1 overflow-x-auto px-5 py-2.5 sm:px-6">
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`shrink-0 ${navLinkClass(isActive)}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </header>
   );
 }
