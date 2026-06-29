@@ -1,24 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7efe6;
-  --foreground: #312019;
-  --paper: #fff8f1;
-  --paper-soft: #f3e2d0;
-  --line: #e5ceb7;
-  --line-strong: #d8b698;
+  --background: #faf5ec;
+  --foreground: #1f1410;
+  --paper: #ffffff;
+  --paper-soft: #f3eadb;
+  --line: rgba(31, 20, 16, 0.08);
+  --line-strong: rgba(31, 20, 16, 0.16);
 
-  --ink-strong: #2b1912;
-  --ink: #3d281f;
-  --ink-soft: #4f3429;
-  --ink-muted: #6f5344;
-  --ink-faint: #8e7360;
+  --ink-strong: #15100c;
+  --ink: #1f1410;
+  --ink-soft: #3d2c22;
+  --ink-muted: #5c4a3f;
+  --ink-faint: #8e7f73;
 
-  --brand-red: #b20d0d;
-  --brand-red-strong: #860000;
+  --brand-red: #a30d0d;
+  --brand-red-strong: #7a0606;
+  --brand-red-deep: #5a0303;
   --brand-red-soft: #f0b59d;
   --brand-red-mist: #fff0e8;
-  --brand-gold: #f2a52f;
+  --brand-gold: #d9a03a;
+  --brand-gold-soft: #f5e2bd;
   --brand-green: #4f8d2f;
 
   --font-manrope: "Sora", "Avenir Next", "Trebuchet MS", "Noto Sans", sans-serif;
@@ -90,14 +92,11 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(circle at 10% -5%, rgb(178 13 13 / 14%) 0%, transparent 42%),
-    radial-gradient(circle at 86% 12%, rgb(242 165 47 / 17%) 0%, transparent 38%),
-    radial-gradient(circle at 94% 86%, rgb(79 141 47 / 10%) 0%, transparent 32%),
-    linear-gradient(180deg, #fff5ee 0%, #f7efe6 44%, #f1e2d2 100%);
+  background: var(--background);
   color: var(--ink);
   font-family: var(--font-manrope), sans-serif;
   text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -110,8 +109,20 @@ h2,
 h3,
 h4 {
   font-family: var(--font-playfair), serif;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
+}
+
+/* Global focus ring — mustard, visible, accessible. */
+*:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Smooth scroll for in-page anchors. */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Keep text readable on dark CTA buttons across all interaction states. */
@@ -142,7 +153,7 @@ select {
 @keyframes brandRiseIn {
   from {
     opacity: 0;
-    transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 12px, 0);
   }
   to {
     opacity: 1;
@@ -150,28 +161,57 @@ select {
   }
 }
 
+/* Subtle page-load fade for first-fold elements only.
+   Restraint: don't animate everything, every time — feels twitchy. */
 @media (prefers-reduced-motion: no-preference) {
-  main > div > section,
-  main > div > article,
-  main > div > aside,
-  main > section,
-  main > article,
-  main > aside,
-  main > form {
-    animation: brandRiseIn 0.55s ease both;
+  main > section:first-child,
+  main > div:first-child {
+    animation: brandRiseIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
+}
 
-  main > div > section:nth-of-type(2),
-  main > div > article:nth-of-type(2),
-  main > section:nth-of-type(2),
-  main > article:nth-of-type(2) {
-    animation-delay: 0.08s;
-  }
+/* Reduce default heading line-height for tighter editorial blocks. */
+.font-display {
+  line-height: 0.92;
+}
 
-  main > div > section:nth-of-type(3),
-  main > div > article:nth-of-type(3),
-  main > section:nth-of-type(3),
-  main > article:nth-of-type(3) {
-    animation-delay: 0.14s;
+/* Hero carousel caption — soft fade-in on slide change. */
+@keyframes heroCaptionFade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
   }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-caption {
+    animation: heroCaptionFade 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* Button variants — hover/active states.
+   Color + border + bg come from inline style so CSS-var values resolve
+   reliably even across Tailwind arbitrary-value parsing edge cases. */
+.btn-primary:hover {
+  background-color: var(--brand-red-strong) !important;
+  border-color: var(--brand-red-strong) !important;
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-secondary:hover {
+  background-color: var(--brand-red) !important;
+  color: var(--paper) !important;
+}
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+.btn-ghost:hover {
+  background-color: var(--paper-soft) !important;
+}
+.btn-ghost:active {
+  transform: scale(0.98);
 }
