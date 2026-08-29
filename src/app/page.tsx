@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Flame, Heart, Leaf } from "@phosphor-icons/react/dist/ssr";
 
 import { HeroCarousel, type HeroSlide } from "@/components/home/hero-carousel";
 import { MenuCard } from "@/components/menu/menu-card";
@@ -9,9 +10,10 @@ import { WhatsAppIcon, buildWhatsAppUrl } from "@/components/ui/whatsapp-link";
 import { useApp } from "@/components/providers/app-provider";
 import { featuredMenuIds, menuItems } from "@/data/menu";
 
-const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Holy+Pav+Adugodi+Bengaluru";
+const MAPS_URL = "https://maps.app.goo.gl/3KNCS6xpPaYeVqCA9";
 const WHATSAPP_ORDER_URL = buildWhatsAppUrl("Hi Holy Pav, I'd like to place an order.");
+
+const TRUST_ICONS = { leaf: Leaf, flame: Flame, heart: Heart } as const;
 
 const HERO_SLIDES: HeroSlide[] = [
   {
@@ -23,10 +25,10 @@ const HERO_SLIDES: HeroSlide[] = [
   },
   {
     src: "/hero/sides.jpg",
-    alt: "Kanda Bhajji fritters served with dry chutney and sweet tamarind chutney in a Holy Pav wrapper",
-    eyebrow: "On the side",
-    title: "Kanda Bhajji",
-    price: "₹79",
+    alt: "Onion Krispers served with dry chutney and sweet tamarind chutney in a Holy Pav wrapper",
+    eyebrow: "Holy bites",
+    title: "Onion Krispers",
+    price: "₹99",
   },
   {
     src: "/hero/box.jpg",
@@ -45,11 +47,7 @@ export default function HomePage() {
     <div className="space-y-24 sm:space-y-32 lg:space-y-40">
       <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
-          <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
-            <span className="h-px w-6 bg-[var(--brand-red)]" />
-            {dictionary.home.kicker}
-          </p>
-          <h1 className="mt-6 font-display text-[44px] leading-[0.92] tracking-[0.01em] text-[var(--ink-strong)] sm:text-[64px] lg:text-[80px]">
+          <h1 className="font-display text-[44px] leading-[0.92] tracking-[0.01em] text-[var(--ink-strong)] sm:text-[64px] lg:text-[80px]">
             {dictionary.home.title}
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--ink-muted)] sm:text-lg">
@@ -66,17 +64,17 @@ export default function HomePage() {
             </Button>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
             <a
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-[var(--brand-red)]"
             >
-              Adugodi, Bengaluru →
+              {dictionary.home.metadataLocation} →
             </a>
             <span className="hidden h-px w-6 bg-[var(--line-strong)] sm:block" />
-            <span>Open 11 AM – 11 PM</span>
+            <span>{dictionary.home.metadataHours}</span>
           </div>
         </div>
 
@@ -98,21 +96,51 @@ export default function HomePage() {
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {dictionary.home.trustCards.map((card) => (
-            <article
-              key={card.number}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-30px_rgba(31,20,16,0.25)] sm:p-8"
+          {dictionary.home.trustCards.map((card) => {
+            const Icon = TRUST_ICONS[card.icon];
+            return (
+              <article
+                key={card.title}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-30px_rgba(31,20,16,0.25)] sm:p-8"
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--brand-red)] text-[var(--brand-red)]">
+                  <Icon size={22} weight="regular" />
+                </span>
+                <h3 className="mt-6 font-display text-2xl leading-tight text-[var(--ink-strong)] sm:text-[28px]">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-[14px] leading-[1.55] text-[var(--ink-muted)]">
+                  {card.body}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
+            {dictionary.home.anatomyEyebrow}
+          </p>
+          <h2 className="mt-3 max-w-3xl font-display text-[32px] leading-[0.95] text-[var(--ink-strong)] sm:text-[44px] lg:text-[52px]">
+            {dictionary.home.anatomyTitle}
+          </h2>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {dictionary.home.anatomyCallouts.map((callout) => (
+            <div
+              key={callout.title}
+              className="border-t border-[var(--line-strong)] pt-5"
             >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--brand-gold-soft)] text-[11px] font-semibold tracking-[0.04em] text-[var(--brand-red)]">
-                {card.number}
-              </span>
-              <h3 className="mt-6 font-display text-2xl leading-tight text-[var(--ink-strong)] sm:text-[28px]">
-                {card.title}
+              <h3 className="font-display text-lg leading-tight text-[var(--ink-strong)] sm:text-xl">
+                {callout.title}
               </h3>
-              <p className="mt-3 text-[14px] leading-[1.55] text-[var(--ink-muted)]">
-                {card.body}
+              <p className="mt-2 text-[13px] leading-[1.5] text-[var(--ink-muted)]">
+                {callout.body}
               </p>
-            </article>
+            </div>
           ))}
         </div>
       </section>
@@ -153,7 +181,7 @@ export default function HomePage() {
             </div>
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
-                Adugodi · Bengaluru
+                {dictionary.home.storyStamps}
               </p>
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
                 Photo coming soon

@@ -17,10 +17,13 @@ export interface MenuItem {
   price: number;
   category: string;
   categoryKn: string;
+  subcategory?: string;
+  subcategoryKn?: string;
   dietaryTag: DietaryTag;
   isAvailable: boolean;
   accent: string;
-  image: string;
+  image: string | null;
+  sinfullyGood?: boolean;
 }
 
 export interface CartItem {

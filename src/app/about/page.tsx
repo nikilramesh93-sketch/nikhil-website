@@ -51,7 +51,7 @@ export default function AboutPage() {
             {dictionary.about.quote}
           </p>
           <footer className="mt-8 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--paper)]/65">
-            — {dictionary.about.quoteAttribution}
+            - {dictionary.about.quoteAttribution}
           </footer>
         </blockquote>
       </section>
@@ -59,12 +59,10 @@ export default function AboutPage() {
       <section className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end md:justify-between">
         <div>
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
-            What's next
+            {dictionary.about.closerEyebrow}
           </p>
           <h2 className="mt-3 font-display text-[36px] leading-[0.95] text-[var(--ink-strong)] sm:text-[52px]">
-            Pull up a chair.
-            <br />
-            The bun is fresh.
+            {dictionary.about.closerTitle}
           </h2>
         </div>
         <Button href="/menu" variant="primary" size="lg">

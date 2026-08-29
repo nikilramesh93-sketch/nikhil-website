@@ -8,10 +8,9 @@ import {
 } from "@/components/ui/whatsapp-link";
 import { useApp } from "@/components/providers/app-provider";
 
-const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Holy+Pav+Adugodi+Bengaluru";
+const MAPS_URL = "https://maps.app.goo.gl/3KNCS6xpPaYeVqCA9";
 const MAPS_EMBED =
-  "https://www.google.com/maps?q=Holy+Pav+Adugodi+Bengaluru&output=embed";
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.562034984379!2d77.60529467577125!3d12.935846515659778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15839eb6bb61%3A0x4cfec39992f4657b!2sHOLY%20PAV!5e0!3m2!1sen!2sin!4v1788004872876!5m2!1sen!2sin";
 const WHATSAPP_HELLO_URL = buildWhatsAppUrl(
   "Hi Holy Pav, I'd like to place an order.",
 );
@@ -67,9 +66,9 @@ export default function ContactPage() {
             <address className="mt-3 not-italic font-display text-2xl leading-[1.15] text-[var(--ink-strong)] sm:text-[28px]">
               Ground Floor, Krishna Nagar,
               <br />
-              No.13, Hosur Main Road,
+              13, Hosur Main Road, near Christ University,
               <br />
-              Adugodi, Bengaluru 560029
+              Koramangala Industrial Layout, Bengaluru 560029
             </address>
             <div className="mt-5">
               <Button href={MAPS_URL} variant="secondary" size="md" external>
@@ -119,10 +118,10 @@ export default function ContactPage() {
                 {dictionary.contact.corporateLabel}
               </p>
               <a
-                href="mailto:corporate@holypav.in"
+                href="mailto:nikil@holypav.com"
                 className="mt-3 block text-[15px] text-[var(--ink)] hover:text-[var(--brand-red)]"
               >
-                corporate@holypav.in
+                nikil@holypav.com
               </a>
             </div>
           </div>
@@ -136,7 +135,7 @@ export default function ContactPage() {
             style={{ border: 0, minHeight: 420 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Holy Pav Adugodi location"
+            title="Holy Pav Koramangala location"
           />
         </div>
       </section>
@@ -155,7 +154,7 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="md:justify-self-end">
-            <Button href="mailto:corporate@holypav.in" variant="primary" size="lg">
+            <Button href="mailto:nikil@holypav.com" variant="primary" size="lg">
               Email Holy Pav
             </Button>
           </div>

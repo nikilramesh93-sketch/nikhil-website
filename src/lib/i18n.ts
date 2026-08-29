@@ -3,8 +3,8 @@ import type { Locale } from "@/types/commerce";
 export interface Dictionary {
   brand: {
     name: string;
-    tagline: string;
-    city: string;
+    masterLine: string;
+    footerSub: string;
   };
   nav: {
     home: string;
@@ -36,20 +36,25 @@ export interface Dictionary {
     empty: string;
   };
   home: {
-    kicker: string;
     title: string;
     subtitle: string;
     primaryCta: string;
     secondaryCta: string;
+    metadataLocation: string;
+    metadataHours: string;
     trustTitle: string;
     trustEyebrow: string;
-    trustCards: { number: string; title: string; body: string }[];
+    trustCards: { icon: "leaf" | "flame" | "heart"; title: string; body: string }[];
+    anatomyEyebrow: string;
+    anatomyTitle: string;
+    anatomyCallouts: { title: string; body: string }[];
     bestsellerTitle: string;
     bestsellerEyebrow: string;
     storyEyebrow: string;
     storyTitle: string;
     storyBody: string;
     storyCta: string;
+    storyStamps: string;
     seoDescription: string;
   };
   about: {
@@ -59,6 +64,8 @@ export interface Dictionary {
     sections: { eyebrow: string; title: string; body: string }[];
     quote: string;
     quoteAttribution: string;
+    closerEyebrow: string;
+    closerTitle: string;
     cta: string;
   };
   menu: {
@@ -67,6 +74,7 @@ export interface Dictionary {
     availabilityLabel: string;
     inStock: string;
     outOfStock: string;
+    vegNote: string;
   };
   cart: {
     title: string;
@@ -147,8 +155,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
   en: {
     brand: {
       name: "Holy Pav",
-      tagline: "Serving authentic Mumbai street food in Bengaluru",
-      city: "Born in Mumbai. Built for Bengaluru",
+      masterLine: "If it goes with pav, we are making it.",
+      footerSub: "One kitchen in Koramangala. Open 11 AM to 11 PM, every day.",
     },
     nav: {
       home: "Home",
@@ -180,40 +188,50 @@ export const dictionaries: Record<Locale, Dictionary> = {
       empty: "Nothing here yet",
     },
     home: {
-      kicker: "Born in Mumbai. Built for Bengaluru",
-      title: "Holy Pav brings the soul of Mumbai's streets to Bengaluru",
-      subtitle:
-        "Serving authentic Mumbai street food in Bengaluru.",
+      title: "If it goes with pav, we are making it.",
+      subtitle: "Vada, misal, bhaji, butter, cheese. Fried after you order, buttered while it's hot.",
       primaryCta: "Explore menu",
       secondaryCta: "Order on WhatsApp",
-      trustEyebrow: "Why Holy Pav",
-      trustTitle: "We are not just in Bengaluru. We are for Bengaluru.",
+      metadataLocation: "Koramangala, Bengaluru",
+      metadataHours: "Open 11 AM – 11 PM",
+      trustEyebrow: "The rule",
+      trustTitle: "Everything we make, we make to go with pav.",
       trustCards: [
         {
-          number: "01",
-          title: "Mumbai recipes",
-          body: "The chutneys, the masala, the bun. Recipes carried over from Mumbai's most loved street corners, made the way they're meant to be.",
+          icon: "leaf",
+          title: "Fresh ingredients",
+          body: "Chutneys ground that morning, potatoes peeled that morning, oil that hasn't seen yesterday.",
         },
         {
-          number: "02",
-          title: "Made for the city",
-          body: "Spice levels, portion sizes, and pricing built for Bengaluru's office lunches, weekend cravings, and rainy evenings.",
+          icon: "flame",
+          title: "Bold flavours",
+          body: "Garlic chutney with a kick, schezwan that bites, molten cheese that doesn't apologise. Nothing here is mild by accident.",
         },
         {
-          number: "03",
-          title: "Hygiene",
-          body: "Once you've had Holy Pav, everything else tastes like a sin. Clean kitchen, sealed packaging, fresh every batch.",
+          icon: "heart",
+          title: "Made with love",
+          body: "Fried after you order, split and buttered on the tava, sealed and handed over hot. Clean kitchen, fresh batch, every time.",
         },
+      ],
+      anatomyEyebrow: "Inside Holy Pav",
+      anatomyTitle: "Five layers. No shortcuts.",
+      anatomyCallouts: [
+        { title: "Soft pav", body: "Light, fluffy and buttery." },
+        { title: "Green chutney", body: "Fresh, spicy and vibrant." },
+        { title: "Golden vada", body: "Crispy outside, soft and flavourful inside." },
+        { title: "Garlic chutney", body: "Spicy, garlicky and full of punch." },
+        { title: "Buttery pav", body: "The perfect base that holds it all together." },
       ],
       bestsellerEyebrow: "The menu",
       bestsellerTitle: "Made fresh, every order",
       storyEyebrow: "Our story",
-      storyTitle: "From a Mumbai chawl to a Bengaluru kitchen.",
+      storyTitle: "We started with one pav and got obsessive.",
       storyBody:
-        "Holy Pav was born from a simple frustration — you couldn't get a proper Bombay-style vada pav in Bengaluru. So we built one. The bun is soft, the chutneys are loud, the masala is sharp. Nothing fancy, just right.",
+        "Soft pav, loud chutneys, sharp masala. Then we started asking what else deserved to go inside it, and stopped saying no.",
       storyCta: "Read our story",
+      storyStamps: "Est. 2026 · Koramangala, Bengaluru",
       seoDescription:
-        "Authentic Mumbai street food in Bengaluru. Vada pav, misal pav, pav bhaji and more — made fresh, served at our Adugodi kitchen.",
+        "A pav kitchen in Koramangala, Bengaluru. Vada pav, misal, pav bhaji and sides, fried after you order. Sinfully good.",
     },
     menu: {
       title: "Menu",
@@ -221,6 +239,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       availabilityLabel: "Availability",
       inStock: "In stock",
       outOfStock: "Out of stock",
+      vegNote: "100% Vegetarian Kitchen",
     },
     cart: {
       title: "Your cart",
@@ -277,14 +296,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     about: {
       kicker: "Our story",
-      title: "Born in Mumbai. Built for Bengaluru.",
-      subtitle:
-        "Holy Pav is a love letter to Mumbai's street food, written in Bengaluru.",
+      title: "One pav. No limits.",
+      subtitle: "We don't just make food. We craft cravings.",
       sections: [
         {
           eyebrow: "The why",
-          title: "Bengaluru deserves real vada pav.",
-          body: "We grew up on Mumbai's streets — late-night vada pav after college, misal pav for Sunday breakfast, kanda bhajji in the monsoon. When we moved to Bengaluru, the city had everything except this. So we built it.",
+          title: "It starts with the pav.",
+          body: "Get the pav right, soft, fresh, built to hold butter, and everything you put in it has a chance. Get it wrong and nothing saves you. That's where we started, and it's still where every new item begins.",
         },
         {
           eyebrow: "Made to order",
@@ -293,18 +311,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
         },
         {
           eyebrow: "The masala",
-          title: "Mumbai recipes, no shortcuts.",
-          body: "Our garlic chutney is dry-roasted, ground fresh. The vada batter is tempered with curry leaves and asafoetida the same way it's done in Dadar. We don't substitute.",
+          title: "No shortcuts. No substitutes.",
+          body: "Garlic chutney dry-roasted and ground fresh. Batter tempered with curry leaves and asafoetida. We don't buy the shortcut version of anything that touches the pav.",
         },
         {
           eyebrow: "The promise",
-          title: "We are not just in Bengaluru. We are for Bengaluru.",
-          body: "Holy Pav is a Mumbai brand that lives in Bengaluru. Our spice levels, our portions, our pricing — everything is dialed for this city. We're not visiting. We're home.",
+          title: "If it goes with pav, we are making it.",
+          body: "Butter, cheese, schezwan, sprouts, masala, the rule is simple and the list is open. Tell us what belongs in a pav and we'll probably try it.",
         },
       ],
       quote:
         "“Once you’ve had Holy Pav, everything else tastes like a sin.”",
       quoteAttribution: "Every first-time customer, eventually.",
+      closerEyebrow: "What's next",
+      closerTitle: "Come find out what else we put in a pav.",
       cta: "See the menu",
     },
     partners: {
@@ -337,8 +357,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
   kn: {
     brand: {
       name: "ಹೋಲಿ ಪಾವ್",
-      tagline: "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಸಲಿ ಮುಂಬೈ ಸ್ಟ್ರೀಟ್ ಫುಡ್",
-      city: "ಮುಂಬೈಯಲ್ಲಿ ಹುಟ್ಟಿದ್ದು. ಬೆಂಗಳೂರಿಗಾಗಿ ರೂಪುಗೊಂಡದ್ದು",
+      masterLine: "ಪಾವ್‌ಗೆ ಹೊಂದುವುದಾದರೆ, ನಾವು ಅದನ್ನು ಮಾಡುತ್ತೇವೆ.",
+      footerSub: "ಕೊರಮಂಗಲದಲ್ಲಿ ಒಂದು ಅಡಿಗೆ. ಪ್ರತಿದಿನ ಬೆಳಿಗ್ಗೆ 11 ರಿಂದ ರಾತ್ರಿ 11 ರವರೆಗೆ ತೆರೆದಿರುತ್ತದೆ.",
     },
     nav: {
       home: "ಮುಖಪುಟ",
@@ -370,40 +390,51 @@ export const dictionaries: Record<Locale, Dictionary> = {
       empty: "ಇಲ್ಲಿಗೆ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ",
     },
     home: {
-      kicker: "ಮುಂಬೈಯಲ್ಲಿ ಹುಟ್ಟಿದ್ದು. ಬೆಂಗಳೂರಿಗಾಗಿ ರೂಪುಗೊಂಡದ್ದು",
-      title: "ಹೋಲಿ ಪಾವ್ ಮುಂಬೈ ಬೀದಿಗಳ ಆತ್ಮವನ್ನು ಬೆಂಗಳೂರಿಗೆ ತರುತ್ತದೆ",
+      title: "ಪಾವ್‌ಗೆ ಹೊಂದುವುದಾದರೆ, ನಾವು ಅದನ್ನು ಮಾಡುತ್ತೇವೆ.",
       subtitle:
-        "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಸಲಿ ಮುಂಬೈ ಸ್ಟ್ರೀಟ್ ಫುಡ್.",
+        "ವಡಾ, ಮಿಸಲ್, ಭಾಜಿ, ಬಟರ್, ಚೀಸ್. ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ ಮಾಡಿ, ಬಿಸಿಯಾಗಿರುವಾಗಲೇ ಬೆಣ್ಣೆ ಹಚ್ಚಲಾಗುತ್ತದೆ.",
       primaryCta: "ಮೆನು ನೋಡಿ",
       secondaryCta: "WhatsApp ನಲ್ಲಿ ಆರ್ಡರ್",
-      trustEyebrow: "ಏಕೆ ಹೋಲಿ ಪಾವ್",
-      trustTitle: "ನಾವು ಕೇವಲ ಬೆಂಗಳೂರಿನಲ್ಲಿಲ್ಲ. ನಾವು ಬೆಂಗಳೂರಿಗಾಗಿ ಇದ್ದೇವೆ.",
+      metadataLocation: "ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರು",
+      metadataHours: "ಬೆಳಿಗ್ಗೆ 11 – ರಾತ್ರಿ 11",
+      trustEyebrow: "ನಿಯಮ",
+      trustTitle: "ನಾವು ಮಾಡುವ ಎಲ್ಲವೂ ಪಾವ್‌ಗೆ ಹೊಂದುವಂತೆ ಮಾಡುತ್ತೇವೆ.",
       trustCards: [
         {
-          number: "೦೧",
-          title: "ಮುಂಬೈ ರೆಸಿಪಿ",
-          body: "ಚಟ್ನಿ, ಮಸಾಲೆ, ಬನ್. ಮುಂಬೈನ ಜನಪ್ರಿಯ ಬೀದಿಗಳಿಂದ ತಂದ ರೆಸಿಪಿ, ಎಂದಿನಂತೆ ತಯಾರಿಸಲಾಗಿದೆ.",
+          icon: "leaf",
+          title: "ತಾಜಾ ಪದಾರ್ಥಗಳು",
+          body: "ಆ ಬೆಳಗ್ಗೆ ಅರೆದ ಚಟ್ನಿ, ಆ ಬೆಳಗ್ಗೆ ಸುಲಿದ ಆಲೂಗಡ್ಡೆ, ನಿನ್ನೆಯದಲ್ಲದ ಎಣ್ಣೆ.",
         },
         {
-          number: "೦೨",
-          title: "ನಗರಕ್ಕಾಗಿ",
-          body: "ಬೆಂಗಳೂರಿನ ಆಫೀಸ್ ಊಟ, ವೀಕೆಂಡ್ ಬಯಕೆ, ಮಳೆಯ ಸಂಜೆಗಳಿಗೆ ಸರಿಯಾದ ಮಸಾಲೆ, ಭಾಗ ಮತ್ತು ಬೆಲೆ.",
+          icon: "flame",
+          title: "ಬೋಲ್ಡ್ ಫ್ಲೇವರ್ಸ್",
+          body: "ಖಾರ ಇರುವ ಬೆಳ್ಳುಳ್ಳಿ ಚಟ್ನಿ, ಜೋರಾದ ಸೆಜ್ವಾನ್, ಕ್ಷಮೆ ಕೇಳದ ಕರಗಿದ ಚೀಸ್. ಇಲ್ಲಿ ಆಕಸ್ಮಿಕವಾಗಿ ಮೈಲ್ಡ್ ಆಗಿರುವುದು ಏನೂ ಇಲ್ಲ.",
         },
         {
-          number: "೦೩",
-          title: "ಶುಚಿತ್ವ",
-          body: "ಹೋಲಿ ಪಾವ್ ತಿಂದ ಮೇಲೆ ಬೇರೆ ಎಲ್ಲವೂ ಪಾಪವಂತೆ ಅನಿಸುತ್ತದೆ. ಸ್ವಚ್ಛ ಅಡಿಗೆ, ಸೀಲ್ ಪ್ಯಾಕೇಜಿಂಗ್, ಪ್ರತಿ ಬ್ಯಾಚ್ ತಾಜಾ.",
+          icon: "heart",
+          title: "ಪ್ರೀತಿಯಿಂದ ತಯಾರಿಸಿದ್ದು",
+          body: "ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ ಮಾಡಿ, ತವಾದಲ್ಲಿ ಸೀಳಿ ಬೆಣ್ಣೆ ಹಚ್ಚಿ, ಬಿಸಿಯಾಗಿ ಸೀಲ್ ಮಾಡಿ ಕೊಡಲಾಗುತ್ತದೆ. ಸ್ವಚ್ಛ ಅಡಿಗೆ, ಪ್ರತಿ ಬಾರಿ ತಾಜಾ ಬ್ಯಾಚ್.",
         },
+      ],
+      anatomyEyebrow: "ಹೋಲಿ ಪಾವ್ ಒಳಗೆ",
+      anatomyTitle: "ಐದು ಪದರಗಳು. ಯಾವುದೇ ಶಾರ್ಟ್‌ಕಟ್ ಇಲ್ಲ.",
+      anatomyCallouts: [
+        { title: "ಮೃದು ಪಾವ್", body: "ಹಗುರ, ನುಣುಪಾದ ಮತ್ತು ಬೆಣ್ಣೆಯುಕ್ತ." },
+        { title: "ಹಸಿರು ಚಟ್ನಿ", body: "ತಾಜಾ, ಖಾರ ಮತ್ತು ಚುರುಕಾದ." },
+        { title: "ಗೋಲ್ಡನ್ ವಡಾ", body: "ಹೊರಗೆ ಕರಕರಿತ, ಒಳಗೆ ಮೃದು ಮತ್ತು ರುಚಿಕರ." },
+        { title: "ಬೆಳ್ಳುಳ್ಳಿ ಚಟ್ನಿ", body: "ಖಾರ, ಬೆಳ್ಳುಳ್ಳಿಯುಕ್ತ ಮತ್ತು ಪಂಚ್ ತುಂಬಿದ." },
+        { title: "ಬೆಣ್ಣೆ ಪಾವ್", body: "ಎಲ್ಲವನ್ನೂ ಒಟ್ಟಿಗೆ ಹಿಡಿದಿಡುವ ಪರಿಪೂರ್ಣ ಆಧಾರ." },
       ],
       bestsellerEyebrow: "ಮೆನು",
       bestsellerTitle: "ಪ್ರತಿ ಆರ್ಡರ್‌ಗೆ, ತಾಜಾ ತಯಾರಿಸಿದ",
       storyEyebrow: "ನಮ್ಮ ಕಥೆ",
-      storyTitle: "ಮುಂಬೈ ಚಾಳ್‌ನಿಂದ ಬೆಂಗಳೂರು ಅಡಿಗೆಗೆ.",
+      storyTitle: "ನಾವು ಒಂದು ಪಾವ್‌ನಿಂದ ಶುರು ಮಾಡಿ ಗೀಳಾಗಿ ಹೋದೆವು.",
       storyBody:
-        "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಸರಿಯಾದ ಬಾಂಬೆ-ಸ್ಟೈಲ್ ವಡಾ ಪಾವ್ ಸಿಗದ ಸಿಟ್ಟಿನಿಂದ ಹೋಲಿ ಪಾವ್ ಹುಟ್ಟಿತು. ಹಾಗಾಗಿ ನಾವೇ ಒಂದನ್ನು ಮಾಡಿದೆವು. ಬನ್ ಮೃದು, ಚಟ್ನಿ ಜೋರು, ಮಸಾಲೆ ತೀಕ್ಷ್ಣ. ಯಾವುದೂ ತೋರಿಕೆಯದಲ್ಲ, ಬರೀ ಸರಿಯಾದದ್ದು.",
+        "ಮೃದು ಪಾವ್, ಜೋರಾದ ಚಟ್ನಿ, ತೀಕ್ಷ್ಣ ಮಸಾಲೆ. ನಂತರ ಇದರೊಳಗೆ ಇನ್ನೇನು ಹೋಗಬಹುದು ಎಂದು ಕೇಳಲು ಶುರು ಮಾಡಿದೆವು, ಇಲ್ಲ ಎನ್ನುವುದನ್ನು ನಿಲ್ಲಿಸಿದೆವು.",
       storyCta: "ನಮ್ಮ ಕಥೆ ಓದಿ",
+      storyStamps: "Est. 2026 · ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರು",
       seoDescription:
-        "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಸಲಿ ಮುಂಬೈ ಸ್ಟ್ರೀಟ್ ಫುಡ್. ವಡಾ ಪಾವ್, ಮಿಸಲ್ ಪಾವ್, ಪಾವ್ ಭಾಜಿ — ಆದ್ಗೋಡಿ ಅಡಿಗೆಯಲ್ಲಿ ತಾಜಾ ತಯಾರಿಸಲಾಗಿದೆ.",
+        "ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರಿನಲ್ಲಿ ಒಂದು ಪಾವ್ ಅಡಿಗೆ. ವಡಾ ಪಾವ್, ಮಿಸಲ್, ಪಾವ್ ಭಾಜಿ ಮತ್ತು ಸೈಡ್ಸ್, ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ ಮಾಡಲಾಗುತ್ತದೆ. Sinfully good.",
     },
     menu: {
       title: "ಮೆನು",
@@ -411,6 +442,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       availabilityLabel: "ಲಭ್ಯತೆ",
       inStock: "ಲಭ್ಯವಿದೆ",
       outOfStock: "ಸ್ಟಾಕ್ ಇಲ್ಲ",
+      vegNote: "100% ಸಸ್ಯಾಹಾರಿ ಅಡುಗೆ",
     },
     cart: {
       title: "ನಿಮ್ಮ ಕಾರ್ಟ್",
@@ -467,14 +499,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     about: {
       kicker: "ನಮ್ಮ ಕಥೆ",
-      title: "ಮುಂಬೈಯಲ್ಲಿ ಹುಟ್ಟಿದ್ದು. ಬೆಂಗಳೂರಿಗಾಗಿ ರೂಪುಗೊಂಡದ್ದು.",
-      subtitle:
-        "ಹೋಲಿ ಪಾವ್ ಮುಂಬೈ ಬೀದಿ ಆಹಾರಕ್ಕೆ ಒಂದು ಪ್ರೇಮಪತ್ರ, ಬೆಂಗಳೂರಿನಲ್ಲಿ ಬರೆದದ್ದು.",
+      title: "ಒಂದು ಪಾವ್. ಮಿತಿಗಳಿಲ್ಲ.",
+      subtitle: "ನಾವು ಬರೀ ಆಹಾರ ಮಾಡುವುದಿಲ್ಲ. ನಾವು ಕ್ರೇವಿಂಗ್ ರೂಪಿಸುತ್ತೇವೆ.",
       sections: [
         {
           eyebrow: "ಯಾಕೆ",
-          title: "ಬೆಂಗಳೂರಿಗೆ ನಿಜವಾದ ವಡಾ ಪಾವ್ ಬೇಕು.",
-          body: "ನಾವು ಮುಂಬೈ ಬೀದಿಗಳಲ್ಲಿ ಬೆಳೆದೆವು — ಕಾಲೇಜ್ ನಂತರ ರಾತ್ರಿ ವಡಾ ಪಾವ್, ಭಾನುವಾರದ ಬೆಳಗಿನ ಊಟಕ್ಕೆ ಮಿಸಲ್ ಪಾವ್, ಮಳೆಯ ಸಂಜೆಗೆ ಕಾಂಡಾ ಭಜ್ಜಿ. ಬೆಂಗಳೂರು ಬಂದಾಗ ಎಲ್ಲವೂ ಇತ್ತು, ಆದರೆ ಇದು ಮಾತ್ರ ಇರಲಿಲ್ಲ. ಹಾಗಾಗಿ ನಾವೇ ಮಾಡಿದೆವು.",
+          title: "ಇದು ಪಾವ್‌ನಿಂದ ಶುರುವಾಗುತ್ತದೆ.",
+          body: "ಪಾವ್ ಅನ್ನು ಸರಿಯಾಗಿ ಮಾಡಿ, ಮೃದು, ತಾಜಾ, ಬೆಣ್ಣೆ ಹಿಡಿದಿಡುವಂತೆ, ಆಗ ನೀವು ಅದರೊಳಗೆ ಹಾಕುವ ಎಲ್ಲದಕ್ಕೂ ಒಂದು ಅವಕಾಶ ಸಿಗುತ್ತದೆ. ತಪ್ಪಾಗಿ ಮಾಡಿದರೆ ಏನೂ ಉಳಿಸುವುದಿಲ್ಲ. ಅದೇ ನಾವು ಶುರು ಮಾಡಿದ ಸ್ಥಳ, ಮತ್ತು ಪ್ರತಿ ಹೊಸ ಐಟಂ ಅಲ್ಲಿಂದಲೇ ಶುರುವಾಗುತ್ತದೆ.",
         },
         {
           eyebrow: "ಆರ್ಡರ್‌ಗೆ ತಯಾರಿಸಿದ್ದು",
@@ -483,18 +514,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
         },
         {
           eyebrow: "ಮಸಾಲೆ",
-          title: "ಮುಂಬೈ ರೆಸಿಪಿ, ಯಾವುದೇ ಶಾರ್ಟ್‌ಕಟ್ ಇಲ್ಲ.",
-          body: "ನಮ್ಮ ಬೆಳ್ಳುಳ್ಳಿ ಚಟ್ನಿಯನ್ನು ಒಣ-ಭಾಜಿಸಿ, ತಾಜಾವಾಗಿ ಅರೆಯುತ್ತೇವೆ. ವಡಾ ಬ್ಯಾಟರ್‌ಗೆ ಕರಿಬೇವು ಮತ್ತು ಹಿಂಗು ಬೆರೆಸುತ್ತೇವೆ — ದಾದರ್‌ನಲ್ಲಿ ಮಾಡುವ ರೀತಿ. ನಾವು ಬದಲಿಗಳನ್ನು ಬಳಸುವುದಿಲ್ಲ.",
+          title: "ಯಾವುದೇ ಶಾರ್ಟ್‌ಕಟ್ ಇಲ್ಲ. ಯಾವುದೇ ಬದಲಿ ಇಲ್ಲ.",
+          body: "ಬೆಳ್ಳುಳ್ಳಿ ಚಟ್ನಿಯನ್ನು ಒಣ-ಭಾಜಿಸಿ, ತಾಜಾವಾಗಿ ಅರೆಯುತ್ತೇವೆ. ಬ್ಯಾಟರ್‌ಗೆ ಕರಿಬೇವು ಮತ್ತು ಹಿಂಗು ಬೆರೆಸುತ್ತೇವೆ. ಪಾವ್‌ಗೆ ತಾಗುವ ಯಾವುದೇ ವಸ್ತುವಿನ ಶಾರ್ಟ್‌ಕಟ್ ಆವೃತ್ತಿಯನ್ನು ನಾವು ಖರೀದಿಸುವುದಿಲ್ಲ.",
         },
         {
           eyebrow: "ವಾಗ್ದಾನ",
-          title: "ನಾವು ಕೇವಲ ಬೆಂಗಳೂರಿನಲ್ಲಿಲ್ಲ. ನಾವು ಬೆಂಗಳೂರಿಗಾಗಿ ಇದ್ದೇವೆ.",
-          body: "ಹೋಲಿ ಪಾವ್ ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಾಸಿಸುವ ಒಂದು ಮುಂಬೈ ಬ್ರ್ಯಾಂಡ್. ನಮ್ಮ ಮಸಾಲೆ ಮಟ್ಟ, ನಮ್ಮ ಭಾಗ, ನಮ್ಮ ಬೆಲೆ — ಎಲ್ಲವೂ ಈ ನಗರಕ್ಕಾಗಿ ಸರಿಪಡಿಸಿದ್ದು. ನಾವು ಭೇಟಿ ನೀಡುತ್ತಿಲ್ಲ. ನಾವು ಮನೆಯಲ್ಲಿದ್ದೇವೆ.",
+          title: "ಪಾವ್‌ಗೆ ಹೊಂದುವುದಾದರೆ, ನಾವು ಅದನ್ನು ಮಾಡುತ್ತೇವೆ.",
+          body: "ಬೆಣ್ಣೆ, ಚೀಸ್, ಸೆಜ್ವಾನ್, ಮೊಳಕೆ, ಮಸಾಲೆ, ನಿಯಮ ಸರಳ ಮತ್ತು ಪಟ್ಟಿ ತೆರೆದಿದೆ. ಪಾವ್‌ಗೆ ಏನು ಸೇರುತ್ತದೆ ಎಂದು ಹೇಳಿ, ನಾವು ಬಹುಶಃ ಅದನ್ನು ಪ್ರಯತ್ನಿಸುತ್ತೇವೆ.",
         },
       ],
       quote:
         "“ಹೋಲಿ ಪಾವ್ ತಿಂದ ಮೇಲೆ ಬೇರೆ ಎಲ್ಲವೂ ಪಾಪವಂತೆ ಅನಿಸುತ್ತದೆ.”",
       quoteAttribution: "ಪ್ರತಿ ಮೊದಲ ಬಾರಿ ಗ್ರಾಹಕ, ಕೊನೆಗೆ.",
+      closerEyebrow: "ಮುಂದೇನು",
+      closerTitle: "ಪಾವ್‌ನಲ್ಲಿ ಇನ್ನೇನು ಹಾಕುತ್ತೇವೆ ಎಂದು ಬಂದು ನೋಡಿ.",
       cta: "ಮೆನು ನೋಡಿ",
     },
     partners: {

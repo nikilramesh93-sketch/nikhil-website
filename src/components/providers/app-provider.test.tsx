@@ -61,7 +61,7 @@ describe("AppProvider cart/wishlist", () => {
     await waitFor(() => {
       expect(screen.getByTestId("locale")).toHaveTextContent("kn");
       expect(localStorage.getItem("holy-pav-locale")).toBe("kn");
-      expect(localStorage.getItem("holy-pav-cart")).toContain("classic-vada-pav");
+      expect(localStorage.getItem("holy-pav-cart")).toContain(menuItems[0].id);
       expect(localStorage.getItem("holy-pav-wishlist")).toBe("[]");
     });
   });

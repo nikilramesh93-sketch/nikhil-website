@@ -21,10 +21,10 @@ export function SiteFooter() {
               {dictionary.brand.name}
             </p>
             <h2 className="mt-3 font-display text-4xl leading-[0.95] text-[var(--ink-strong)] sm:text-5xl">
-              {dictionary.brand.tagline}
+              {dictionary.brand.masterLine}
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--ink-muted)]">
-              A single kitchen in Adugodi. Mumbai recipes, Bengaluru hours.
+              {dictionary.brand.footerSub}
             </p>
           </div>
 
@@ -35,9 +35,9 @@ export function SiteFooter() {
             <address className="mt-3 not-italic text-sm leading-relaxed text-[var(--ink)]">
               Ground Floor, Krishna Nagar,
               <br />
-              No.13, Hosur Main Road,
+              13, Hosur Main Road, near Christ University,
               <br />
-              Adugodi, Bengaluru 560029
+              Koramangala Industrial Layout, Bengaluru 560029
             </address>
             <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
               Hours
@@ -70,10 +70,10 @@ export function SiteFooter() {
                 <span className="transition-transform group-hover:translate-x-0.5">→</span>
               </a>
               <a
-                href="mailto:corporate@holypav.in"
+                href="mailto:nikil@holypav.com"
                 className="group inline-flex w-fit items-center gap-1.5 transition-colors hover:text-[var(--brand-red)]"
               >
-                corporate@holypav.in
+                nikil@holypav.com
               </a>
               <a
                 href={`tel:+${"919019494768"}`}
@@ -104,7 +104,7 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-[var(--line)] pt-6 text-[11px] uppercase tracking-[0.18em] text-[var(--ink-faint)] sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Holy Pav. Bengaluru.</p>
-          <p>FSSAI Lic. ##### · Made in Adugodi</p>
+          <p>FSSAI Lic. No. 21226194001851</p>
         </div>
       </div>
     </footer>

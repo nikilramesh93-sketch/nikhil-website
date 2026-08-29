@@ -1,12 +1,27 @@
 import type { Metadata } from "next";
+import { Anton, Sora } from "next/font/google";
 
 import { AppProvider } from "@/components/providers/app-provider";
 import { SiteShell } from "@/components/layout/site-shell";
 import "./globals.css";
 
-const title = "Holy Pav | Bengaluru Pav Kitchen";
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const title = "Holy Pav | If it goes with pav, we are making it";
 const description =
-  "Holy Pav serves premium Mumbai-style pav in Bengaluru with menu browsing, cart, wishlist, and checkout experience.";
+  "A pav kitchen in Koramangala, Bengaluru. Vada pav, misal, pav bhaji and sides, fried after you order. Sinfully good.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://holypav.in"),
@@ -37,14 +52,19 @@ const localBusinessSchema = {
   servesCuisine: ["Indian Street Food", "Mumbai Street Food"],
   areaServed: "Bengaluru",
   url: "https://holypav.in",
-  telephone: "+91-98765-43210",
+  telephone: "+91-90194-94768",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "12, 100 Feet Road",
-    addressLocality: "Indiranagar",
+    streetAddress: "Ground Floor, Krishna Nagar, 13, Hosur Main Road, near Christ University",
+    addressLocality: "Koramangala Industrial Layout, Bengaluru",
     addressRegion: "Karnataka",
-    postalCode: "560038",
+    postalCode: "560029",
     addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 12.9358413,
+    longitude: 77.6078696,
   },
 };
 
@@ -54,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sora.variable} ${anton.variable}`}>
       <body className="antialiased">
         <AppProvider>
           <SiteShell>{children}</SiteShell>

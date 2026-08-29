@@ -18,6 +18,7 @@ const menuItem = {
   dietaryTag: "veg" as const,
   isAvailable: true,
   accent: "from-orange-100 to-rose-100",
+  image: null,
 };
 
 describe("store utils", () => {

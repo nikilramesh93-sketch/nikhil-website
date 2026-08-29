@@ -45,13 +45,8 @@ export function SiteHeader() {
               priority
             />
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-xl tracking-[0.02em] text-[var(--ink-strong)] sm:text-2xl">
-              HOLY PAV
-            </span>
-            <span className="mt-0.5 hidden text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)] sm:block">
-              {dictionary.brand.city}
-            </span>
+          <span className="font-display text-xl tracking-[0.02em] text-[var(--ink-strong)] sm:text-2xl">
+            HOLY PAV
           </span>
         </Link>
 

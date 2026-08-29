@@ -23,8 +23,8 @@
   --brand-gold-soft: #f5e2bd;
   --brand-green: #4f8d2f;
 
-  --font-manrope: "Sora", "Avenir Next", "Trebuchet MS", "Noto Sans", sans-serif;
-  --font-playfair: "Anton", "Bebas Neue", "Haettenschweiler", "Impact", "Arial Narrow Bold", sans-serif;
+  --font-manrope: var(--font-sora), "Avenir Next", "Trebuchet MS", "Noto Sans", sans-serif;
+  --font-playfair: var(--font-anton), "Bebas Neue", "Haettenschweiler", "Impact", "Arial Narrow Bold", sans-serif;
 
   /* Override commonly used Tailwind tokens to make the existing UI inherit the brand palette. */
   --color-slate-50: #faf1e8;
