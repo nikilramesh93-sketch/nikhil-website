@@ -34,7 +34,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-amber-100 to-orange-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/og-crispy-vada-pav-holypav.jpg",
   },
   {
     id: "butter-masala-vada-pav",
@@ -51,7 +51,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-yellow-100 to-amber-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/butter-masala-vada-pav-holypav.jpg",
   },
 
   // ── Vada Pav · Specials ───────────────────────────────────────
@@ -70,7 +70,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-orange-100 to-amber-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/butter-grilled-vada-pav-holypav.jpg",
   },
   {
     id: "schezwan-grilled-vada-pav",
@@ -87,7 +87,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/schezwan-grilled-vada-pav-holypav.jpg",
   },
   {
     id: "cheese-grilled-vada-pav",
@@ -105,7 +105,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-amber-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/cheese-grilled-vada-pav-holypav.jpg",
     sinfullyGood: true,
   },
   {
@@ -124,7 +124,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-orange-100 to-red-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/cheese-burst-vada-pav-holypav.jpg",
     sinfullyGood: true,
   },
   {
@@ -143,7 +143,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-orange-100 to-red-100",
-    image: "/menu/og-vada-pav-holypav.jpg",
+    image: "/menu/crispy-cheese-burst-vada-pav-holypav.jpg",
   },
 
   // ── Must Try · Dabeli ─────────────────────────────────────────
@@ -163,7 +163,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-rose-100 to-orange-100",
-    image: "/menu/dabeli-holypav.jpg",
+    image: "/menu/butter-dabeli-holypav.jpg",
   },
   {
     id: "schezwan-dabeli",
@@ -179,7 +179,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-rose-100 to-orange-100",
-    image: "/menu/dabeli-holypav.jpg",
+    image: "/menu/schezwan-dabeli-holypav.jpg",
   },
   {
     id: "cheese-dabeli",
@@ -195,7 +195,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-rose-100 to-orange-100",
-    image: "/menu/dabeli-holypav.jpg",
+    image: "/menu/cheese-dabeli-holypav.jpg",
   },
 
   // ── Must Try · Pav Bhaji ──────────────────────────────────────
@@ -215,7 +215,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-amber-100 to-yellow-100",
-    image: "/menu/pav-bhaji-holypav.jpg",
+    image: "/menu/butter-pav-bhaji-holypav.jpg",
   },
   {
     id: "cheese-pav-bhaji",
@@ -231,7 +231,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-amber-100 to-yellow-100",
-    image: "/menu/pav-bhaji-holypav.jpg",
+    image: "/menu/cheese-pav-bhaji-holypav.jpg",
   },
 
   // ── Must Try · Misal Pav ──────────────────────────────────────
@@ -250,7 +250,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-amber-100",
-    image: "/menu/misal-pav.png",
+    image: "/menu/regular-misal-pav-holypav.jpg",
   },
   {
     id: "bhoot-jolokia-misal-pav",
@@ -266,7 +266,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-amber-100",
-    image: "/menu/misal-pav.png",
+    image: "/menu/bhoot-jolokia-misal-pav-holypav.jpg",
   },
 
   // ── Holy Bites ────────────────────────────────────────────────
@@ -284,7 +284,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-yellow-100 to-orange-100",
-    image: null,
+    image: "/menu/onion-krispers-holypav.jpg",
   },
   {
     id: "potato-krispers",
@@ -300,7 +300,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-yellow-100 to-orange-100",
-    image: null,
+    image: "/menu/potato-krispers-holypav.jpg",
   },
   {
     id: "corn-krispers",
@@ -316,7 +316,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-yellow-100 to-orange-100",
-    image: null,
+    image: "/menu/corn-krispers-holypav.jpg",
   },
   {
     id: "cheese-sticks",
@@ -332,7 +332,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-yellow-100 to-orange-100",
-    image: null,
+    image: "/menu/cheese-sticks-holypav.jpg",
   },
   {
     id: "cheese-pop-krispers",
@@ -348,7 +348,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-yellow-100 to-orange-100",
-    image: null,
+    image: "/menu/cheese-pop-krispers-holypav.jpg",
   },
 
   // ── Holy Drinks · Hot ─────────────────────────────────────────
@@ -366,7 +366,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-amber-100 to-yellow-100",
-    image: null,
+    image: "/menu/adrak-chai-holypav.jpg",
   },
   {
     id: "elaichi-chai",
@@ -382,7 +382,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-amber-100 to-yellow-100",
-    image: null,
+    image: "/menu/elaichi-chai-holypav.jpg",
   },
   {
     id: "masala-chai",
@@ -398,7 +398,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-amber-100 to-yellow-100",
-    image: null,
+    image: "/menu/masala-chai-holypav.jpg",
   },
   {
     id: "turmeric-milk",
@@ -432,7 +432,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-lime-100 to-emerald-100",
-    image: null,
+    image: "/menu/buttermilk-holypav.jpg",
   },
   {
     id: "mint-mojito",
@@ -464,7 +464,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-lime-100 to-emerald-100",
-    image: null,
+    image: "/menu/peach-arnold-palmer-holypav.jpg",
   },
   {
     id: "holy-cold-coco",
@@ -480,7 +480,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-lime-100 to-emerald-100",
-    image: null,
+    image: "/menu/holy-cold-coco-holypav.jpg",
   },
 
   // ── Holy Combos ───────────────────────────────────────────────
@@ -498,7 +498,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/og-combo-holypav.jpg",
   },
   {
     id: "cozy-combo",
@@ -514,7 +514,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/cozy-combo-holypav.jpg",
   },
   {
     id: "double-trouble-combo",
@@ -530,7 +530,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/double-trouble-combo-holypav.jpg",
   },
   {
     id: "the-holy-trinity",
@@ -546,7 +546,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/the-holy-trinity-holypav.jpg",
   },
   {
     id: "cheesy-affair-combo",
@@ -562,7 +562,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/cheesy-affair-combo-holypav.jpg",
   },
   {
     id: "partners-combo",
@@ -578,7 +578,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/partners-combo-holypav.jpg",
   },
   {
     id: "weekend-feast-combo",
@@ -594,7 +594,7 @@ export const menuItems: MenuItem[] = [
     dietaryTag: "veg",
     isAvailable: true,
     accent: "from-red-100 to-orange-100",
-    image: null,
+    image: "/menu/weekend-feast-combo-holypav.jpg",
   },
 ];
 
