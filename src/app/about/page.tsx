@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Ribbon } from "@/components/ui/ribbon";
 import { useApp } from "@/components/providers/app-provider";
 
 export default function AboutPage() {
@@ -9,10 +10,7 @@ export default function AboutPage() {
   return (
     <div className="space-y-24 sm:space-y-32">
       <section className="max-w-4xl">
-        <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
-          <span className="h-px w-6 bg-[var(--brand-red)]" />
-          {dictionary.about.kicker}
-        </p>
+        <Ribbon>{dictionary.about.kicker}</Ribbon>
         <h1 className="mt-6 font-display text-[48px] leading-[0.92] text-[var(--ink-strong)] sm:text-[72px] lg:text-[88px]">
           {dictionary.about.title}
         </h1>
@@ -42,15 +40,18 @@ export default function AboutPage() {
         ))}
       </section>
 
-      <section className="relative overflow-hidden rounded-3xl bg-[var(--brand-red)] px-6 py-16 sm:px-12 sm:py-24 lg:px-20 lg:py-28">
-        <div className="absolute right-6 top-6 font-display text-[180px] leading-none text-[var(--paper)]/8 sm:text-[280px]">
+      <section
+        className="panel-grain relative overflow-hidden rounded-3xl px-6 py-16 sm:px-12 sm:py-24 lg:px-20 lg:py-28"
+        style={{ backgroundColor: "var(--brand-red-deep)" }}
+      >
+        <div className="absolute right-6 top-6 font-display text-[180px] leading-none text-[var(--brand-gold)]/20 sm:text-[280px]">
           “
         </div>
         <blockquote className="relative max-w-3xl">
           <p className="font-display text-[32px] leading-[1.05] text-[var(--paper)] sm:text-[48px] lg:text-[60px]">
             {dictionary.about.quote}
           </p>
-          <footer className="mt-8 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--paper)]/65">
+          <footer className="mt-8 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-gold)]">
             - {dictionary.about.quoteAttribution}
           </footer>
         </blockquote>

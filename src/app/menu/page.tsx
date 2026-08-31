@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { MenuCard } from "@/components/menu/menu-card";
+import { Ribbon } from "@/components/ui/ribbon";
 import { useApp } from "@/components/providers/app-provider";
 import {
   featuredMenuIds,
@@ -106,10 +107,7 @@ export default function MenuPage() {
   return (
     <div className="space-y-20">
       <section className="max-w-3xl">
-        <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
-          <span className="h-px w-6 bg-[var(--brand-red)]" />
-          The menu
-        </p>
+        <Ribbon>{dictionary.menu.ribbon}</Ribbon>
         <h1 className="mt-6 font-display text-[44px] leading-[0.92] text-[var(--ink-strong)] sm:text-[64px] lg:text-[76px]">
           {dictionary.menu.title}
         </h1>

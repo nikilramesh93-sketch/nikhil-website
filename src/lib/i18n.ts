@@ -56,6 +56,14 @@ export interface Dictionary {
     storyCta: string;
     storyStamps: string;
     seoDescription: string;
+    heroRibbon: string;
+    heroStampLine1: string;
+    heroStampLine2: string;
+    occasionsTitle: string;
+    occasions: { icon: "cap" | "briefcase" | "people" | "moon"; label: string }[];
+    deliveryEyebrow: string;
+    deliveryTitle: string;
+    deliverySubtitle: string;
   };
   about: {
     kicker: string;
@@ -75,6 +83,8 @@ export interface Dictionary {
     inStock: string;
     outOfStock: string;
     vegNote: string;
+    ribbon: string;
+    signatureTag: string;
   };
   cart: {
     title: string;
@@ -126,6 +136,7 @@ export interface Dictionary {
     phoneLabel: string;
     timingLabel: string;
     corporateLabel: string;
+    ribbon: string;
   };
   partners: {
     title: string;
@@ -146,6 +157,8 @@ export interface Dictionary {
     successBody: string;
     codeLabel: string;
     note: string;
+    stampLine1: string;
+    stampLine2: string;
   };
 }
 
@@ -232,6 +245,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
       storyStamps: "Est. 2026 · Koramangala, Bengaluru",
       seoDescription:
         "A pav kitchen in Koramangala, Bengaluru. Vada pav, misal, pav bhaji and sides, fried after you order. Sinfully good.",
+      heroRibbon: "Sinfully good.",
+      heroStampLine1: "Freshly made.",
+      heroStampLine2: "Boldly served.",
+      occasionsTitle: "Find us near you",
+      occasions: [
+        { icon: "cap", label: "College streets" },
+        { icon: "briefcase", label: "Office lunches" },
+        { icon: "people", label: "Weekend cravings" },
+        { icon: "moon", label: "Late night bites" },
+      ],
+      deliveryEyebrow: "Holy. Home delivery.",
+      deliveryTitle: "Hot. Fresh. On its way.",
+      deliverySubtitle: "Order on WhatsApp and we'll have it at your door.",
     },
     menu: {
       title: "Menu",
@@ -240,6 +266,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       inStock: "In stock",
       outOfStock: "Out of stock",
       vegNote: "100% Vegetarian Kitchen",
+      ribbon: "Made fresh, every order.",
+      signatureTag: "Signature",
     },
     cart: {
       title: "Your cart",
@@ -293,6 +321,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       phoneLabel: "Phone",
       timingLabel: "Hours",
       corporateLabel: "Corporate orders",
+      ribbon: "Open 11 AM – 11 PM.",
     },
     about: {
       kicker: "Our story",
@@ -352,6 +381,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Your signup is received. Use this affiliate discount code while spreading the word on social media.",
       codeLabel: "Affiliate influencer discount code",
       note: "Our team will contact you for campaign kits and collaboration details.",
+      stampLine1: "Officially",
+      stampLine2: "Holy.",
     },
   },
   kn: {
@@ -435,6 +466,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
       storyStamps: "Est. 2026 · ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರು",
       seoDescription:
         "ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರಿನಲ್ಲಿ ಒಂದು ಪಾವ್ ಅಡಿಗೆ. ವಡಾ ಪಾವ್, ಮಿಸಲ್, ಪಾವ್ ಭಾಜಿ ಮತ್ತು ಸೈಡ್ಸ್, ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ ಮಾಡಲಾಗುತ್ತದೆ. Sinfully good.",
+      heroRibbon: "ಪಾಪದಷ್ಟು ಚೆನ್ನಾಗಿದೆ.",
+      heroStampLine1: "ತಾಜಾ ತಯಾರಿಸಿದ್ದು.",
+      heroStampLine2: "ಗಟ್ಟಿಯಾಗಿ ಬಡಿಸಿದ್ದು.",
+      occasionsTitle: "ನಿಮ್ಮ ಹತ್ತಿರ ನಮ್ಮನ್ನು ಹುಡುಕಿ",
+      occasions: [
+        { icon: "cap", label: "ಕಾಲೇಜು ಬೀದಿಗಳು" },
+        { icon: "briefcase", label: "ಆಫೀಸ್ ಲಂಚ್" },
+        { icon: "people", label: "ವೀಕೆಂಡ್ ಕ್ರೇವಿಂಗ್ಸ್" },
+        { icon: "moon", label: "ರಾತ್ರಿ ತಿಂಡಿ" },
+      ],
+      deliveryEyebrow: "ಹೋಲಿ. ಹೋಂ ಡೆಲಿವರಿ.",
+      deliveryTitle: "ಬಿಸಿ. ತಾಜಾ. ದಾರಿಯಲ್ಲಿದೆ.",
+      deliverySubtitle: "WhatsApp ನಲ್ಲಿ ಆರ್ಡರ್ ಮಾಡಿ, ನಾವು ನಿಮ್ಮ ಬಾಗಿಲಿಗೆ ತಲುಪಿಸುತ್ತೇವೆ.",
     },
     menu: {
       title: "ಮೆನು",
@@ -443,6 +487,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       inStock: "ಲಭ್ಯವಿದೆ",
       outOfStock: "ಸ್ಟಾಕ್ ಇಲ್ಲ",
       vegNote: "100% ಸಸ್ಯಾಹಾರಿ ಅಡುಗೆ",
+      ribbon: "ಪ್ರತಿ ಆರ್ಡರ್‌ಗೆ, ತಾಜಾ ತಯಾರಿಸಿದ.",
+      signatureTag: "ಸಿಗ್ನೇಚರ್",
     },
     cart: {
       title: "ನಿಮ್ಮ ಕಾರ್ಟ್",
@@ -496,6 +542,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       phoneLabel: "ಫೋನ್",
       timingLabel: "ಸಮಯ",
       corporateLabel: "ಕಾರ್ಪೊರೇಟ್ ಆರ್ಡರ್",
+      ribbon: "ಬೆಳಿಗ್ಗೆ 11 – ರಾತ್ರಿ 11 ತೆರೆದಿರುತ್ತದೆ.",
     },
     about: {
       kicker: "ನಮ್ಮ ಕಥೆ",
@@ -555,6 +602,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "ನಿಮ್ಮ ಸೈನ್ ಅಪ್ ಸ್ವೀಕರಿಸಲಾಗಿದೆ. ಸೋಷಲ್ ಮೀಡಿಯಾದಲ್ಲಿ ಪ್ರಚಾರ ಮಾಡುವಾಗ ಈ ಅಫಿಲಿಯೇಟ್ ಡಿಸ್ಕೌಂಟ್ ಕೋಡ್ ಬಳಸಿ.",
       codeLabel: "ಅಫಿಲಿಯೇಟ್ ಇನ್‌ಫ್ಲುವೆನ್ಸರ್ ಡಿಸ್ಕೌಂಟ್ ಕೋಡ್",
       note: "ಕ್ಯಾಂಪೇನ್ ಕಿಟ್ ಮತ್ತು ಸಹಕಾರ ವಿವರಗಳಿಗೆ ನಮ್ಮ ತಂಡ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತದೆ.",
+      stampLine1: "ಅಧಿಕೃತವಾಗಿ",
+      stampLine2: "ಹೋಲಿ.",
     },
   },
 };

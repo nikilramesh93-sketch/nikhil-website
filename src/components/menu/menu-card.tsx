@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { MenuItem } from "@/types/commerce";
 import { formatCurrency } from "@/lib/format";
 import { useApp } from "@/components/providers/app-provider";
+import { Ribbon } from "@/components/ui/ribbon";
 import { menuItems } from "@/data/menu";
 
 const hasNonVegItems = menuItems.some((menuItem) => menuItem.dietaryTag === "non-veg");
@@ -53,11 +54,7 @@ export function MenuCard({ item, featured = false }: MenuCardProps) {
               />
             </span>
           )}
-          {featured && (
-            <span className="rounded-full bg-[var(--brand-gold)] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-strong)]">
-              Signature
-            </span>
-          )}
+          {featured && <Ribbon size="sm">{dictionary.menu.signatureTag}</Ribbon>}
         </div>
         {!item.isAvailable && (
           <div className="absolute inset-0 flex items-center justify-center bg-[var(--ink-strong)]/55 backdrop-blur-[1px]">

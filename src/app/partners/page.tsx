@@ -3,6 +3,8 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Ribbon } from "@/components/ui/ribbon";
+import { StampBadge } from "@/components/ui/stamp-badge";
 import { useApp } from "@/components/providers/app-provider";
 
 interface PartnerFormState {
@@ -63,10 +65,7 @@ export default function PartnersPage() {
   return (
     <div className="space-y-20">
       <section className="max-w-3xl">
-        <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
-          <span className="h-px w-6 bg-[var(--brand-red)]" />
-          {dictionary.partners.introBadge}
-        </p>
+        <Ribbon>{dictionary.partners.introBadge}</Ribbon>
         <h1 className="mt-6 font-display text-[44px] leading-[0.92] text-[var(--ink-strong)] sm:text-[60px] lg:text-[72px]">
           {dictionary.partners.title}
         </h1>
@@ -108,27 +107,41 @@ export default function PartnersPage() {
           </div>
         </aside>
 
-        <article className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 sm:p-10">
+        <article
+          className={
+            affiliateCode
+              ? "panel-grain relative overflow-hidden rounded-2xl p-7 sm:p-10"
+              : "rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 sm:p-10"
+          }
+          style={affiliateCode ? { backgroundColor: "var(--brand-red-deep)" } : undefined}
+        >
           {affiliateCode ? (
-            <div className="space-y-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-red)]">
+            <div className="relative space-y-4">
+              <div className="absolute -top-2 right-0">
+                <StampBadge
+                  lines={[dictionary.partners.stampLine1, dictionary.partners.stampLine2]}
+                  tone="on-dark"
+                  size={88}
+                />
+              </div>
+              <p className="max-w-[70%] text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-gold)]">
                 Welcome aboard
               </p>
-              <h2 className="font-display text-[36px] leading-[0.95] text-[var(--ink-strong)] sm:text-[44px]">
+              <h2 className="max-w-[70%] font-display text-[36px] leading-[0.95] text-[var(--paper)] sm:text-[44px]">
                 {dictionary.partners.successTitle}
               </h2>
-              <p className="text-[15px] leading-[1.6] text-[var(--ink-muted)]">
+              <p className="max-w-[70%] text-[15px] leading-[1.6] text-[var(--paper)]/80">
                 {dictionary.partners.successBody}
               </p>
-              <div className="mt-6 rounded-2xl border border-dashed border-[var(--brand-red)] bg-[var(--brand-red-mist)] p-6">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-red)]">
+              <div className="mt-6 rounded-2xl border border-dashed border-[var(--brand-gold)] bg-[var(--paper)]/10 p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-gold)]">
                   {dictionary.partners.codeLabel}
                 </p>
-                <p className="mt-3 font-display text-[28px] tracking-[0.04em] text-[var(--ink-strong)] sm:text-[32px]">
+                <p className="mt-3 font-display text-[28px] tracking-[0.04em] text-[var(--paper)] sm:text-[32px]">
                   {affiliateCode}
                 </p>
               </div>
-              <p className="pt-2 text-[13px] text-[var(--ink-muted)]">
+              <p className="pt-2 text-[13px] text-[var(--paper)]/70">
                 {dictionary.partners.note}
               </p>
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Ribbon } from "@/components/ui/ribbon";
 import {
   WHATSAPP_DISPLAY,
   WhatsAppIcon,
@@ -21,10 +22,7 @@ export default function ContactPage() {
   return (
     <div className="space-y-20">
       <section className="max-w-3xl">
-        <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
-          <span className="h-px w-6 bg-[var(--brand-red)]" />
-          Visit
-        </p>
+        <Ribbon>{dictionary.contact.ribbon}</Ribbon>
         <h1 className="mt-6 font-display text-[44px] leading-[0.92] text-[var(--ink-strong)] sm:text-[64px] lg:text-[80px]">
           {dictionary.contact.title}
         </h1>
