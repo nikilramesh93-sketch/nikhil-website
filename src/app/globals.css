@@ -223,6 +223,38 @@ select {
   transform: scale(0.98);
 }
 
+/* Buttons sitting on a deep-red panel (404, poster sections).
+   Declared after the .btn-* rules above so the :hover states win on equal
+   specificity instead of inheriting the cream-page hover colors. */
+.btn-on-red-gold,
+.btn-on-red-gold:hover,
+.btn-on-red-gold:active {
+  background-color: var(--brand-gold) !important;
+  border-color: var(--brand-gold) !important;
+  color: var(--brand-red-deep) !important;
+}
+.btn-on-red-gold:hover {
+  background-color: var(--brand-gold-soft) !important;
+  border-color: var(--brand-gold-soft) !important;
+}
+.btn-on-red-gold:active {
+  transform: scale(0.98);
+}
+
+.btn-on-red-outline {
+  background-color: transparent !important;
+  border-color: var(--paper) !important;
+  color: var(--paper) !important;
+}
+.btn-on-red-outline:hover {
+  background-color: var(--paper) !important;
+  border-color: var(--paper) !important;
+  color: var(--brand-red-deep) !important;
+}
+.btn-on-red-outline:active {
+  transform: scale(0.98);
+}
+
 /* Ribbon — angled mustard banner for short punchy tags.
    Rotation stays within ±3deg so it reads as a hand-slapped sticker, not clip-art. */
 .ribbon {

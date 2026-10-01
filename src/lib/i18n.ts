@@ -86,6 +86,14 @@ export interface Dictionary {
     ribbon: string;
     signatureTag: string;
   };
+  notFound: {
+    code: string;
+    ribbon: string;
+    title: string;
+    body: string;
+    menuCta: string;
+    homeCta: string;
+  };
   cart: {
     title: string;
     subtitle: string;
@@ -269,6 +277,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       vegNote: "100% Vegetarian Kitchen",
       ribbon: "Made fresh, every order.",
       signatureTag: "Signature",
+    },
+    notFound: {
+      code: "404",
+      ribbon: "Not on the menu.",
+      title: "This one we are not making.",
+      body:
+        "The page you were after isn't here. The pav, however, is. Twenty-one things on the menu and not one of them is a dead end.",
+      menuCta: "See the menu",
+      homeCta: "Back to home",
     },
     cart: {
       title: "Your cart",
@@ -491,6 +508,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       vegNote: "100% ಸಸ್ಯಾಹಾರಿ ಅಡುಗೆ",
       ribbon: "ಪ್ರತಿ ಆರ್ಡರ್‌ಗೆ, ತಾಜಾ ತಯಾರಿಸಿದ.",
       signatureTag: "ಸಿಗ್ನೇಚರ್",
+    },
+    notFound: {
+      code: "404",
+      ribbon: "ಮೆನುವಿನಲ್ಲಿ ಇಲ್ಲ.",
+      title: "ಇದನ್ನು ನಾವು ಮಾಡುತ್ತಿಲ್ಲ.",
+      body:
+        "ನೀವು ಹುಡುಕುತ್ತಿದ್ದ ಪೇಜ್ ಇಲ್ಲಿ ಇಲ್ಲ. ಆದರೆ ಪಾವ್ ಇದೆ. ಮೆನುವಿನಲ್ಲಿ ಇಪ್ಪತ್ತೊಂದು ಐಟಂಗಳಿವೆ, ಒಂದೂ ವ್ಯರ್ಥವಲ್ಲ.",
+      menuCta: "ಮೆನು ನೋಡಿ",
+      homeCta: "ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ",
     },
     cart: {
       title: "ನಿಮ್ಮ ಕಾರ್ಟ್",
