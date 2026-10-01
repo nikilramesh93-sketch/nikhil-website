@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { Ribbon } from "@/components/ui/ribbon";
 import { StampBadge } from "@/components/ui/stamp-badge";
+import { WrapperDivider } from "@/components/ui/wrapper-divider";
 import { WhatsAppIcon, buildWhatsAppUrl } from "@/components/ui/whatsapp-link";
 import { useApp } from "@/components/providers/app-provider";
 import { featuredMenuIds, menuItems, signatureMenuIds } from "@/data/menu";
@@ -108,6 +109,17 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Where the pitch ends and the kitchen starts. A hairline rule would say
+          the same thing in nobody's voice.
+
+          The margins fight the parent's space-y: a negative top pulls the strip
+          back up into the gap it would otherwise be added to, and the positive
+          bottom is needed because Tailwind v4 implements space-y-* as
+          margin-bottom, so a negative bottom margin here would overlap the next
+          section instead of tightening the gap. -mt-20 against space-y-24 leaves
+          the strip a 16px breath below the photo above it on mobile. */}
+      <WrapperDivider className="-mt-20 mb-10 sm:-mt-28 sm:mb-12" />
 
       <section>
         <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -301,11 +313,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      <WrapperDivider className="-mt-20 mb-10 sm:-mt-28 sm:mb-12" />
+
       <section className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         {/* This frame used to say "Photo coming soon" to actual customers. Until
             there is a real kitchen shot, it reads as a stamped poster panel
             instead — a deliberate thing rather than a missing one. */}
-        <Reveal variant="wipe" className="order-2 lg:order-1">
+        {/* rounded + clipped on the Reveal itself, not only on the panel inside:
+            the unwrap sheet is a child of the Reveal and would otherwise show
+            square corners over the rounded panel. */}
+        <Reveal
+          variant="wipe"
+          className="relative order-2 overflow-hidden rounded-3xl lg:order-1"
+        >
           <div
             className="panel-grain relative aspect-[5/4] w-full overflow-hidden rounded-3xl"
             style={{ backgroundColor: "var(--brand-red-deep)" }}

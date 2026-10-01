@@ -263,6 +263,23 @@ select {
    state, so reduced-motion visitors lose nothing.
    ─────────────────────────────────────────────────────────────── */
 
+/* The unwrap sheet only exists while the wipe can animate; with reduced motion
+   the frame is already at rest and a sheet of paper parked over it would just be
+   a cover that never comes off. */
+.reveal-wipe-sheet {
+  display: none;
+}
+
+/* The sheet is positioned against the reveal wrapper. Declared in the base layer
+   on purpose: Tailwind's utilities layer wins over it, so a wipe that is already
+   positioned by a utility (`absolute inset-0` on the menu cards) keeps its own
+   positioning instead of being overridden here. */
+@layer base {
+  .reveal-wipe {
+    position: relative;
+  }
+}
+
 /* 1 · RISE & SETTLE — copy blocks, cards, list rows.
       Stagger a grid by passing delay={index * 60} to <Reveal>. */
 @media (prefers-reduced-motion: no-preference) {
@@ -300,6 +317,25 @@ select {
   }
   .reveal-wipe.is-revealed .reveal-wipe-mask {
     clip-path: inset(0 0 0 0);
+  }
+
+  /* UNWRAP — the other half of the wipe. The frame starts as a sheet of
+     wrapper paper and the same knife-pull takes it off, so a photo arrives
+     the way the food does: unwrapped, not faded in. */
+  .reveal-wipe .reveal-wipe-sheet {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background-color: var(--paper-soft);
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.85s cubic-bezier(0.22, 1, 0.26, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: clip-path;
+  }
+  .reveal-wipe.is-revealed .reveal-wipe-sheet {
+    clip-path: inset(0 0 0 100%);
   }
 
   /* Nothing fully transparent should be clickable or tabbable mid-reveal. */
@@ -385,6 +421,90 @@ select {
   border-radius: 50%;
   transform: rotate(-8deg);
   aspect-ratio: 1 / 1;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   WRAPPER PAPER — the brand's own printed paper, used as a material.
+   One tile, four jobs: section dividers, the sheet that unwraps a
+   photo, the empty 404 panel, and the sweep between pages. The tile
+   is an alpha mask, so the ink takes its colour from here and the
+   same asset works on cream and on deep red.
+   ─────────────────────────────────────────────────────────────── */
+.wrapper-paper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--wrapper-ink, var(--ink));
+  opacity: var(--wrapper-opacity, 0.08);
+  -webkit-mask-image: url("/brand/wrapper-tile.png");
+  mask-image: url("/brand/wrapper-tile.png");
+  -webkit-mask-size: var(--wrapper-size, 240px);
+  mask-size: var(--wrapper-size, 240px);
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+}
+
+/* Torn divider. The edges are a deliberately uneven polygon: an even zigzag
+   reads as a sawtooth graphic, uneven reads as paper that was ripped. */
+.wrapper-divider {
+  position: relative;
+  height: 72px;
+}
+@media (min-width: 640px) {
+  .wrapper-divider {
+    height: 88px;
+  }
+}
+.wrapper-divider-sheet {
+  position: absolute;
+  inset: 0;
+  background-color: var(--paper-soft);
+  clip-path: polygon(
+    0% 9%,
+    6% 2%,
+    13% 12%,
+    21% 4%,
+    29% 14%,
+    38% 5%,
+    47% 13%,
+    56% 3%,
+    65% 11%,
+    74% 2%,
+    83% 12%,
+    91% 4%,
+    100% 10%,
+    100% 91%,
+    92% 98%,
+    84% 88%,
+    76% 97%,
+    67% 87%,
+    58% 96%,
+    49% 86%,
+    40% 97%,
+    31% 90%,
+    22% 98%,
+    13% 88%,
+    5% 96%,
+    0% 90%
+  );
+}
+
+/* Page-change sweep. Hidden by default and only shown to visitors who haven't
+   asked for less motion, so it can never sit over the page. The pass itself is
+   run from page-transition.tsx; at rest the sheet is parked off the left edge. */
+.page-sweep {
+  display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-sweep {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    background-color: var(--paper-soft);
+    transform: translate3d(-101%, 0, 0);
+  }
 }
 
 /* Panel grain — the one texture flourish in the system, reserved for red poster panels. */

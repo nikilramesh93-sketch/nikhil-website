@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from "react";
 
+import { WrapperPaper } from "@/components/ui/wrapper-paper";
+
 /**
  * Scroll-entry motion primitive.
  *
@@ -15,7 +17,8 @@ import {
  * repeats a small vocabulary, and as twitchy when every block moves differently.
  *
  *   rise — content lifts and settles. For copy blocks, cards, list rows.
- *   wipe — a left-to-right "butter wipe" uncovers the frame. For photography.
+ *   wipe — a left-to-right "butter wipe" uncovers the frame, taking a sheet of
+ *          wrapper paper off it. For photography.
  *
  * Elements start hidden only inside a `prefers-reduced-motion: no-preference`
  * block in globals.css, so a reduced-motion visitor sees everything at rest
@@ -102,7 +105,17 @@ export function Reveal({
           intersection rect it reports, so a clipped target measures 0x0, never
           crosses the threshold, and would stay hidden for good. */}
       {variant === "wipe" ? (
-        <span className="reveal-wipe-mask">{children}</span>
+        <>
+          <span className="reveal-wipe-mask">{children}</span>
+          {/* The sheet the wipe takes off. Sibling of the mask, never inside it:
+              anything inside is already clipped away by the mask. */}
+          <span className="reveal-wipe-sheet">
+            {/* Printed harder than the dividers on purpose: the sheet is only on
+                screen for under a second, and at divider strength it read as a
+                blank cream card rather than as paper coming off. */}
+            <WrapperPaper opacity={0.3} size={168} />
+          </span>
+        </>
       ) : (
         children
       )}

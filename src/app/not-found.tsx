@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Ribbon } from "@/components/ui/ribbon";
+import { WrapperPaper } from "@/components/ui/wrapper-paper";
 import { useApp } from "@/components/providers/app-provider";
 
 export default function NotFound() {
@@ -14,6 +15,11 @@ export default function NotFound() {
         className="panel-grain relative overflow-hidden rounded-3xl px-6 py-14 sm:px-12 sm:py-20 lg:px-16"
         style={{ backgroundColor: "var(--brand-red-deep)" }}
       >
+        {/* A wrapper with nothing in it. The pattern is what a customer holds
+            when there is food in their hand; printing it empty behind a dead
+            URL is the most on-brand way to say this page has nothing on it. */}
+        <WrapperPaper tone="gold" opacity={0.11} size={200} />
+
         {/* Oversized 404 sitting behind the message, cropped by the panel edge. */}
         <span
           aria-hidden="true"
