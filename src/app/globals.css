@@ -255,6 +255,105 @@ select {
   transform: scale(0.98);
 }
 
+/* ───────────────────────────────────────────────────────────────
+   Motion vocabulary — three moves, used everywhere, nothing else.
+   A small repeated set reads as a brand; a different flourish per
+   section reads as a demo. All of it is opt-in behind
+   prefers-reduced-motion, and the at-rest state is the finished
+   state, so reduced-motion visitors lose nothing.
+   ─────────────────────────────────────────────────────────────── */
+
+/* 1 · RISE & SETTLE — copy blocks, cards, list rows.
+      Stagger a grid by passing delay={index * 60} to <Reveal>. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-rise {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition:
+      opacity 0.62s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-rise.is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* 2 · BUTTER WIPE — photography only. The frame is uncovered left to
+        right, like a knife pulled across warm pav. No scale here on
+        purpose: scale belongs to the sizzle hover, and stacking the two
+        on one element makes them fight. */
+  .reveal-wipe {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.85s cubic-bezier(0.22, 1, 0.26, 1);
+    will-change: clip-path;
+  }
+  .reveal-wipe.is-revealed {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Nothing fully transparent should be clickable or tabbable mid-reveal. */
+  .reveal-rise:not(.is-revealed) {
+    pointer-events: none;
+  }
+}
+
+/* 3 · SIZZLE — the hover signature on anything edible.
+      Warm tinted lift plus a highlight sweeping across the photo,
+      so the card reads as hot food catching light rather than a
+      SaaS tile growing a grey shadow. */
+.sizzle {
+  transition:
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.32s ease-out,
+    border-color 0.32s ease-out;
+}
+.sizzle:hover,
+.sizzle:focus-within {
+  /* The lift lives here rather than on a Tailwind hover:-translate utility:
+     .reveal-rise also writes transform, and this rule is declared after it so
+     the two don't cancel each other out mid-reveal. */
+  transform: translate3d(0, -4px, 0);
+  border-color: var(--brand-red-soft);
+  /* Shadow carries the brand hue instead of neutral black. */
+  box-shadow:
+    0 26px 60px -30px rgba(134, 0, 0, 0.45),
+    0 2px 10px -6px rgba(134, 0, 0, 0.3);
+}
+
+.sizzle-frame {
+  position: relative;
+  isolation: isolate;
+}
+/* The sweep. Parked off the left edge, crosses on hover. */
+.sizzle-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background-image: linear-gradient(
+    104deg,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 240, 214, 0.42) 50%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  transform: translate3d(-115%, 0, 0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sizzle-frame::after {
+    transition:
+      transform 0.72s cubic-bezier(0.3, 0.9, 0.3, 1),
+      opacity 0.24s ease-out;
+  }
+  .sizzle:hover .sizzle-frame::after,
+  .sizzle:focus-within .sizzle-frame::after {
+    opacity: 1;
+    transform: translate3d(115%, 0, 0);
+  }
+}
+
 /* Ribbon — angled mustard banner for short punchy tags.
    Rotation stays within ±3deg so it reads as a hand-slapped sticker, not clip-art. */
 .ribbon {

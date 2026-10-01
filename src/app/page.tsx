@@ -15,6 +15,7 @@ import {
 import { HeroCarousel, type HeroSlide } from "@/components/home/hero-carousel";
 import { MenuCard } from "@/components/menu/menu-card";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { Ribbon } from "@/components/ui/ribbon";
 import { StampBadge } from "@/components/ui/stamp-badge";
 import { WhatsAppIcon, buildWhatsAppUrl } from "@/components/ui/whatsapp-link";
@@ -113,7 +114,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
               {dictionary.home.trustEyebrow}
@@ -122,15 +123,17 @@ export default function HomePage() {
               {dictionary.home.trustTitle}
             </h2>
           </div>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {dictionary.home.trustCards.map((card) => {
+          {dictionary.home.trustCards.map((card, index) => {
             const Icon = TRUST_ICONS[card.icon];
             return (
-              <article
+              <Reveal
+                as="article"
                 key={card.title}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-30px_rgba(31,20,16,0.25)] sm:p-8"
+                delay={index * 60}
+                className="sizzle group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 sm:p-8"
               >
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--brand-red)] text-[var(--brand-red)]">
                   <Icon size={22} weight="regular" />
@@ -141,7 +144,7 @@ export default function HomePage() {
                 <p className="mt-3 text-[14px] leading-[1.55] text-[var(--ink-muted)]">
                   {card.body}
                 </p>
-              </article>
+              </Reveal>
             );
           })}
         </div>
@@ -151,19 +154,20 @@ export default function HomePage() {
         className="panel-grain rounded-3xl px-6 py-12 sm:px-10 sm:py-16 lg:px-14 lg:py-20"
         style={{ backgroundColor: "var(--brand-red-deep)" }}
       >
-        <div>
+        <Reveal>
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-gold)]">
             {dictionary.home.anatomyEyebrow}
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-[32px] leading-[0.95] text-[var(--paper)] sm:text-[44px] lg:text-[52px]">
             {dictionary.home.anatomyTitle}
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {dictionary.home.anatomyCallouts.map((callout, index) => (
-            <div
+            <Reveal
               key={callout.title}
+              delay={index * 60}
               className="border-t-2 pt-5"
               style={{ borderColor: "var(--brand-gold)" }}
             >
@@ -176,13 +180,13 @@ export default function HomePage() {
               <p className="mt-2 text-[13px] leading-[1.5] text-[var(--paper)]/75">
                 {callout.body}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section>
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
               {dictionary.home.bestsellerEyebrow}
@@ -198,17 +202,19 @@ export default function HomePage() {
             See full menu
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredItems.map((item) => (
-            <MenuCard key={item.id} item={item} featured />
+          {featuredItems.map((item, index) => (
+            <Reveal key={item.id} delay={index * 60} className="h-full">
+              <MenuCard item={item} featured />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section>
-        <div
+        <Reveal
           className="flex flex-col items-start gap-4 rounded-2xl px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8"
           style={{ backgroundColor: "var(--brand-gold)" }}
         >
@@ -236,18 +242,22 @@ export default function HomePage() {
           >
             {dictionary.home.deliverySubtitle}
           </a>
-        </div>
+        </Reveal>
       </section>
 
       <section>
-        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
+        <Reveal as="p" className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
           {dictionary.home.occasionsTitle}
-        </p>
+        </Reveal>
         <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-[var(--line-strong)] pt-6">
           {dictionary.home.occasions.map((occasion, index) => {
             const Icon = OCCASION_ICONS[occasion.icon];
             return (
-              <div key={occasion.label} className="flex items-center gap-6">
+              <Reveal
+                key={occasion.label}
+                delay={index * 60}
+                className="flex items-center gap-6"
+              >
                 {index > 0 && (
                   <span className="hidden h-8 w-px bg-[var(--line-strong)] sm:block" />
                 )}
@@ -257,14 +267,14 @@ export default function HomePage() {
                     {occasion.label}
                   </span>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
       </section>
 
       <section className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-        <div className="order-2 lg:order-1">
+        <Reveal variant="wipe" className="order-2 lg:order-1">
           <div className="relative aspect-[5/4] w-full overflow-hidden rounded-3xl bg-[var(--paper-soft)]">
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="font-display text-[120px] leading-none text-[var(--brand-red)]/15 sm:text-[180px]">
@@ -280,9 +290,9 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="order-1 lg:order-2">
+        <Reveal delay={80} className="order-1 lg:order-2">
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
             {dictionary.home.storyEyebrow}
           </p>
@@ -297,7 +307,7 @@ export default function HomePage() {
               {dictionary.home.storyCta}
             </Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

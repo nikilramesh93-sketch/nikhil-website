@@ -6,6 +6,7 @@ import type { MenuItem } from "@/types/commerce";
 import { formatCurrency } from "@/lib/format";
 import { useApp } from "@/components/providers/app-provider";
 import { Ribbon } from "@/components/ui/ribbon";
+import { Reveal } from "@/components/ui/reveal";
 import { menuItems } from "@/data/menu";
 
 const hasNonVegItems = menuItems.some((menuItem) => menuItem.dietaryTag === "non-veg");
@@ -22,16 +23,18 @@ export function MenuCard({ item, featured = false }: MenuCardProps) {
   const isVeg = item.dietaryTag === "veg";
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-30px_rgba(31,20,16,0.25)]">
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--paper-soft)]">
+    <article className="sizzle group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)]">
+      <div className="sizzle-frame relative aspect-[4/3] w-full overflow-hidden bg-[var(--paper-soft)]">
         {item.image ? (
-          <Image
-            src={item.image}
-            alt={itemName}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          />
+          <Reveal variant="wipe" className="absolute inset-0">
+            <Image
+              src={item.image}
+              alt={itemName}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
+          </Reveal>
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 bg-[var(--paper-soft)]">
             <span className="font-display text-[13px] uppercase tracking-[0.14em] text-[var(--ink-faint)]">
