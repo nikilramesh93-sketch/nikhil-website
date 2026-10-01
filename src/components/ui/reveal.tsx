@@ -93,9 +93,19 @@ export function Reveal({
     <Tag
       ref={ref}
       className={`reveal reveal-${variant} ${className}`.trim()}
-      style={delay ? { ...style, transitionDelay: `${delay}ms` } : style}
+      style={
+        delay ? ({ ...style, "--reveal-delay": `${delay}ms` } as CSSProperties) : style
+      }
     >
-      {children}
+      {/* The wipe's clip-path has to sit on an inner element, never on the
+          observed one: Chrome folds a target's own clip-path into the
+          intersection rect it reports, so a clipped target measures 0x0, never
+          crosses the threshold, and would stay hidden for good. */}
+      {variant === "wipe" ? (
+        <span className="reveal-wipe-mask">{children}</span>
+      ) : (
+        children
+      )}
     </Tag>
   );
 }
