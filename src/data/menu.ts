@@ -252,22 +252,6 @@ export const menuItems: MenuItem[] = [
     accent: "from-red-100 to-amber-100",
     image: "/menu/regular-misal-pav-holypav.jpg",
   },
-  {
-    id: "bhoot-jolokia-misal-pav",
-    name: "Bhoot Jolokia Misal Pav",
-    nameKn: "ಭೂತ್ ಜೊಲೊಕಿಯಾ ಮಿಸಲ್ ಪಾವ್",
-    description: "Our misal pav taken up several notches with ghost pepper heat.",
-    descriptionKn: "ನಮ್ಮ ಮಿಸಲ್ ಪಾವ್, ಭೂತ್ ಜೊಲೊಕಿಯಾ ಖಾರ ಸೇರಿಸಿ ಇನ್ನೂ ತೀಕ್ಷ್ಣ.",
-    price: 219,
-    category: "Must Try",
-    categoryKn: "ಮಸ್ಟ್ ಟ್ರೈ",
-    subcategory: "Misal Pav",
-    subcategoryKn: "ಮಿಸಲ್ ಪಾವ್",
-    dietaryTag: "veg",
-    isAvailable: true,
-    accent: "from-red-100 to-amber-100",
-    image: "/menu/bhoot-jolokia-misal-pav-holypav.jpg",
-  },
 
   // ── Holy Bites ────────────────────────────────────────────────
   {
@@ -400,22 +384,6 @@ export const menuItems: MenuItem[] = [
     accent: "from-amber-100 to-yellow-100",
     image: "/menu/masala-chai-holypav.jpg",
   },
-  {
-    id: "turmeric-milk",
-    name: "Turmeric Milk",
-    nameKn: "ಅರಿಶಿನ ಹಾಲು",
-    description: "Warm milk with turmeric, comforting and good for you.",
-    descriptionKn: "ಅರಿಶಿನ ಬೆರೆಸಿದ ಬಿಸಿ ಹಾಲು, ಸಾಂತ್ವನ ಮತ್ತು ಆರೋಗ್ಯಕರ.",
-    price: 45,
-    category: "Holy Drinks",
-    categoryKn: "ಹೋಲಿ ಡ್ರಿಂಕ್ಸ್",
-    subcategory: "Hot",
-    subcategoryKn: "ಬಿಸಿ",
-    dietaryTag: "veg",
-    isAvailable: true,
-    accent: "from-amber-100 to-yellow-100",
-    image: null,
-  },
 
   // ── Holy Drinks · Cold ────────────────────────────────────────
   {
@@ -451,9 +419,9 @@ export const menuItems: MenuItem[] = [
     image: null,
   },
   {
-    id: "peach-arnold-palmer",
-    name: "Peach Arnold Palmer (Iced Tea)",
-    nameKn: "ಪೀಚ್ ಆರ್ನಾಲ್ಡ್ ಪಾಮರ್ (ಐಸ್ಡ್ ಟೀ)",
+    id: "iced-tea",
+    name: "Iced Tea",
+    nameKn: "ಐಸ್ಡ್ ಟೀ",
     description: "Iced tea and peach lemonade, half and half.",
     descriptionKn: "ಐಸ್ಡ್ ಟೀ ಮತ್ತು ಪೀಚ್ ಲೆಮನೇಡ್, ಸಮ ಪ್ರಮಾಣದಲ್ಲಿ ಮಿಕ್ಸ್ ಮಾಡಿದ್ದು.",
     price: 119,
@@ -465,22 +433,6 @@ export const menuItems: MenuItem[] = [
     isAvailable: true,
     accent: "from-lime-100 to-emerald-100",
     image: "/menu/peach-arnold-palmer-holypav.jpg",
-  },
-  {
-    id: "holy-cold-coco",
-    name: "Holy Cold Coco",
-    nameKn: "ಹೋಲಿ ಕೋಲ್ಡ್ ಕೋಕೊ",
-    description: "Rich, chilled chocolate drink, our take on cold coco.",
-    descriptionKn: "ರಿಚ್, ತಣ್ಣಗಿನ ಚಾಕೊಲೇಟ್ ಡ್ರಿಂಕ್, ನಮ್ಮ ಶೈಲಿಯ ಕೋಲ್ಡ್ ಕೋಕೊ.",
-    price: 199,
-    category: "Holy Drinks",
-    categoryKn: "ಹೋಲಿ ಡ್ರಿಂಕ್ಸ್",
-    subcategory: "Cold",
-    subcategoryKn: "ತಣ್ಣಗೆ",
-    dietaryTag: "veg",
-    isAvailable: true,
-    accent: "from-lime-100 to-emerald-100",
-    image: "/menu/holy-cold-coco-holypav.jpg",
   },
 
   // ── Holy Combos ───────────────────────────────────────────────

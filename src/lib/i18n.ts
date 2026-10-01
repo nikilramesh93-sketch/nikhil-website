@@ -169,7 +169,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     brand: {
       name: "Holy Pav",
       masterLine: "If it goes with pav, we are making it.",
-      footerSub: "One kitchen in Koramangala. Open 11 AM to 11 PM, every day.",
+      footerSub:
+        "Everything we make comes out of one kitchen in Koramangala. Open 11 AM to 11 PM, every day.",
     },
     nav: {
       home: "Home",
@@ -389,7 +390,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     brand: {
       name: "ಹೋಲಿ ಪಾವ್",
       masterLine: "ಪಾವ್‌ಗೆ ಹೊಂದುವುದಾದರೆ, ನಾವು ಅದನ್ನು ಮಾಡುತ್ತೇವೆ.",
-      footerSub: "ಕೊರಮಂಗಲದಲ್ಲಿ ಒಂದು ಅಡಿಗೆ. ಪ್ರತಿದಿನ ಬೆಳಿಗ್ಗೆ 11 ರಿಂದ ರಾತ್ರಿ 11 ರವರೆಗೆ ತೆರೆದಿರುತ್ತದೆ.",
+      footerSub:
+        "ನಾವು ಮಾಡುವ ಎಲ್ಲವೂ ಕೊರಮಂಗಲದ ಒಂದೇ ಅಡುಗೆಮನೆಯಿಂದ ಬರುತ್ತದೆ. ಪ್ರತಿದಿನ ಬೆಳಿಗ್ಗೆ 11 ರಿಂದ ರಾತ್ರಿ 11 ರವರೆಗೆ ತೆರೆದಿರುತ್ತದೆ.",
     },
     nav: {
       home: "ಮುಖಪುಟ",
