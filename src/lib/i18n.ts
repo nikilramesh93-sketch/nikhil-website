@@ -44,7 +44,8 @@ export interface Dictionary {
     metadataHours: string;
     trustTitle: string;
     trustEyebrow: string;
-    trustCards: { icon: "leaf" | "flame" | "heart"; title: string; body: string }[];
+    /** Oversized statements, not cards. The statement is the design; support is the footnote. */
+    trustStatements: { statement: string; support: string }[];
     anatomyEyebrow: string;
     anatomyTitle: string;
     anatomyCallouts: { title: string; body: string }[];
@@ -218,21 +219,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metadataHours: "Open 11 AM – 11 PM",
       trustEyebrow: "The rule",
       trustTitle: "Everything we make, we make to go with pav.",
-      trustCards: [
+      trustStatements: [
         {
-          icon: "leaf",
-          title: "Fresh ingredients",
-          body: "Chutneys ground that morning, potatoes peeled that morning, oil that hasn't seen yesterday.",
+          statement: "Oil that hasn't seen yesterday.",
+          support:
+            "Chutneys ground that morning. Potatoes peeled that morning. Nothing carried over from the night before.",
         },
         {
-          icon: "flame",
-          title: "Bold flavours",
-          body: "Garlic chutney with a kick, schezwan that bites, molten cheese that doesn't apologise. Nothing here is mild by accident.",
+          statement: "Nothing here is mild by accident.",
+          support:
+            "Garlic chutney with a kick, schezwan that bites, molten cheese that doesn't apologise.",
         },
         {
-          icon: "heart",
-          title: "Made with love",
-          body: "Fried after you order, split and buttered on the tava, sealed and handed over hot. Clean kitchen, fresh batch, every time.",
+          statement: "Every batch starts when you do.",
+          support:
+            "Fried to order, split and buttered on the tava, sealed and handed over hot. Clean kitchen, fresh batch, every time.",
         },
       ],
       anatomyEyebrow: "Inside Holy Pav",
@@ -251,7 +252,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       storyBody:
         "Soft pav, loud chutneys, sharp masala. Then we started asking what else deserved to go inside it, and stopped saying no.",
       storyCta: "Read our story",
-      storyStamps: "Est. 2026 · Koramangala, Bengaluru",
+      /* Sits under the big EST. 2026 in the story panel, so it carries the place
+         rather than repeating the year. */
+      storyStamps: "A pav kitchen in Koramangala, Bengaluru",
       seoDescription:
         "A pav kitchen in Koramangala, Bengaluru. Vada pav, misal, pav bhaji and sides, fried after you order. Sinfully good.",
       heroRibbon: "Sinfully good.",
@@ -270,7 +273,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     menu: {
       title: "Menu",
-      subtitle: "Comfort street food with polished flavor and quality ingredients.",
+      subtitle: "Vada, misal, bhaji, dabeli, chai. If it goes with pav, it's on this page.",
       availabilityLabel: "Availability",
       inStock: "In stock",
       outOfStock: "Out of stock",
@@ -283,7 +286,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ribbon: "Not on the menu.",
       title: "This one we are not making.",
       body:
-        "The page you were after isn't here. The pav, however, is. Twenty-one things on the menu and not one of them is a dead end.",
+        "The page you were after isn't here. The pav, however, is. Nothing on the menu is a dead end.",
       menuCta: "See the menu",
       homeCta: "Back to home",
     },
@@ -449,21 +452,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
       metadataHours: "ಬೆಳಿಗ್ಗೆ 11 – ರಾತ್ರಿ 11",
       trustEyebrow: "ನಿಯಮ",
       trustTitle: "ನಾವು ಮಾಡುವ ಎಲ್ಲವೂ ಪಾವ್‌ಗೆ ಹೊಂದುವಂತೆ ಮಾಡುತ್ತೇವೆ.",
-      trustCards: [
+      trustStatements: [
         {
-          icon: "leaf",
-          title: "ತಾಜಾ ಪದಾರ್ಥಗಳು",
-          body: "ಆ ಬೆಳಗ್ಗೆ ಅರೆದ ಚಟ್ನಿ, ಆ ಬೆಳಗ್ಗೆ ಸುಲಿದ ಆಲೂಗಡ್ಡೆ, ನಿನ್ನೆಯದಲ್ಲದ ಎಣ್ಣೆ.",
+          statement: "ನಿನ್ನೆಯದಲ್ಲದ ಎಣ್ಣೆ.",
+          support:
+            "ಆ ಬೆಳಗ್ಗೆ ಅರೆದ ಚಟ್ನಿ. ಆ ಬೆಳಗ್ಗೆ ಸುಲಿದ ಆಲೂಗಡ್ಡೆ. ಹಿಂದಿನ ರಾತ್ರಿಯದು ಏನೂ ಉಳಿಯುವುದಿಲ್ಲ.",
         },
         {
-          icon: "flame",
-          title: "ಬೋಲ್ಡ್ ಫ್ಲೇವರ್ಸ್",
-          body: "ಖಾರ ಇರುವ ಬೆಳ್ಳುಳ್ಳಿ ಚಟ್ನಿ, ಜೋರಾದ ಸೆಜ್ವಾನ್, ಕ್ಷಮೆ ಕೇಳದ ಕರಗಿದ ಚೀಸ್. ಇಲ್ಲಿ ಆಕಸ್ಮಿಕವಾಗಿ ಮೈಲ್ಡ್ ಆಗಿರುವುದು ಏನೂ ಇಲ್ಲ.",
+          statement: "ಇಲ್ಲಿ ಆಕಸ್ಮಿಕವಾಗಿ ಮೈಲ್ಡ್ ಆಗಿರುವುದು ಏನೂ ಇಲ್ಲ.",
+          support:
+            "ಖಾರ ಇರುವ ಬೆಳ್ಳುಳ್ಳಿ ಚಟ್ನಿ, ಜೋರಾದ ಸೆಜ್ವಾನ್, ಕ್ಷಮೆ ಕೇಳದ ಕರಗಿದ ಚೀಸ್.",
         },
         {
-          icon: "heart",
-          title: "ಪ್ರೀತಿಯಿಂದ ತಯಾರಿಸಿದ್ದು",
-          body: "ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ ಮಾಡಿ, ತವಾದಲ್ಲಿ ಸೀಳಿ ಬೆಣ್ಣೆ ಹಚ್ಚಿ, ಬಿಸಿಯಾಗಿ ಸೀಲ್ ಮಾಡಿ ಕೊಡಲಾಗುತ್ತದೆ. ಸ್ವಚ್ಛ ಅಡಿಗೆ, ಪ್ರತಿ ಬಾರಿ ತಾಜಾ ಬ್ಯಾಚ್.",
+          statement: "ಪ್ರತಿ ಬ್ಯಾಚ್ ನೀವು ಶುರು ಮಾಡಿದಾಗಲೇ ಶುರು.",
+          support:
+            "ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ, ತವಾದಲ್ಲಿ ಸೀಳಿ ಬೆಣ್ಣೆ ಹಚ್ಚಿ, ಬಿಸಿಯಾಗಿ ಸೀಲ್ ಮಾಡಿ ಕೊಡಲಾಗುತ್ತದೆ. ಸ್ವಚ್ಛ ಅಡಿಗೆ, ಪ್ರತಿ ಬಾರಿ ತಾಜಾ ಬ್ಯಾಚ್.",
         },
       ],
       anatomyEyebrow: "ಹೋಲಿ ಪಾವ್ ಒಳಗೆ",
@@ -482,7 +485,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       storyBody:
         "ಮೃದು ಪಾವ್, ಜೋರಾದ ಚಟ್ನಿ, ತೀಕ್ಷ್ಣ ಮಸಾಲೆ. ನಂತರ ಇದರೊಳಗೆ ಇನ್ನೇನು ಹೋಗಬಹುದು ಎಂದು ಕೇಳಲು ಶುರು ಮಾಡಿದೆವು, ಇಲ್ಲ ಎನ್ನುವುದನ್ನು ನಿಲ್ಲಿಸಿದೆವು.",
       storyCta: "ನಮ್ಮ ಕಥೆ ಓದಿ",
-      storyStamps: "Est. 2026 · ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರು",
+      storyStamps: "ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರಿನಲ್ಲಿ ಒಂದು ಪಾವ್ ಅಡಿಗೆ",
       seoDescription:
         "ಕೊರಮಂಗಲ, ಬೆಂಗಳೂರಿನಲ್ಲಿ ಒಂದು ಪಾವ್ ಅಡಿಗೆ. ವಡಾ ಪಾವ್, ಮಿಸಲ್, ಪಾವ್ ಭಾಜಿ ಮತ್ತು ಸೈಡ್ಸ್, ಆರ್ಡರ್ ಮಾಡಿದ ನಂತರವೇ ಫ್ರೈ ಮಾಡಲಾಗುತ್ತದೆ. Sinfully good.",
       heroRibbon: "ಪಾಪದಷ್ಟು ಚೆನ್ನಾಗಿದೆ.",
@@ -501,7 +504,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     menu: {
       title: "ಮೆನು",
-      subtitle: "ಪ್ರೀಮಿಯಂ ಗುಣಮಟ್ಟದ ಪದಾರ್ಥಗಳಿಂದ ತಯಾರಿಸಿದ ಸ್ಟ್ರೀಟ್ ಫುಡ್ ರುಚಿ.",
+      subtitle: "ವಡಾ, ಮಿಸಲ್, ಭಾಜಿ, ದಾಬೇಲಿ, ಚಾಯ್. ಪಾವ್‌ಗೆ ಹೊಂದುವುದಾದರೆ, ಅದು ಈ ಪೇಜ್‌ನಲ್ಲಿದೆ.",
       availabilityLabel: "ಲಭ್ಯತೆ",
       inStock: "ಲಭ್ಯವಿದೆ",
       outOfStock: "ಸ್ಟಾಕ್ ಇಲ್ಲ",
@@ -514,7 +517,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ribbon: "ಮೆನುವಿನಲ್ಲಿ ಇಲ್ಲ.",
       title: "ಇದನ್ನು ನಾವು ಮಾಡುತ್ತಿಲ್ಲ.",
       body:
-        "ನೀವು ಹುಡುಕುತ್ತಿದ್ದ ಪೇಜ್ ಇಲ್ಲಿ ಇಲ್ಲ. ಆದರೆ ಪಾವ್ ಇದೆ. ಮೆನುವಿನಲ್ಲಿ ಇಪ್ಪತ್ತೊಂದು ಐಟಂಗಳಿವೆ, ಒಂದೂ ವ್ಯರ್ಥವಲ್ಲ.",
+        "ನೀವು ಹುಡುಕುತ್ತಿದ್ದ ಪೇಜ್ ಇಲ್ಲಿ ಇಲ್ಲ. ಆದರೆ ಪಾವ್ ಇದೆ. ಮೆನುವಿನಲ್ಲಿ ಯಾವುದೂ ವ್ಯರ್ಥವಲ್ಲ.",
       menuCta: "ಮೆನು ನೋಡಿ",
       homeCta: "ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ",
     },

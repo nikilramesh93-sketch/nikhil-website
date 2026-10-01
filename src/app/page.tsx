@@ -3,10 +3,7 @@
 import Link from "next/link";
 import {
   Briefcase,
-  Flame,
   GraduationCap,
-  Heart,
-  Leaf,
   MoonStars,
   Scooter,
   UsersThree,
@@ -20,7 +17,7 @@ import { Ribbon } from "@/components/ui/ribbon";
 import { StampBadge } from "@/components/ui/stamp-badge";
 import { WhatsAppIcon, buildWhatsAppUrl } from "@/components/ui/whatsapp-link";
 import { useApp } from "@/components/providers/app-provider";
-import { featuredMenuIds, menuItems } from "@/data/menu";
+import { featuredMenuIds, menuItems, signatureMenuIds } from "@/data/menu";
 
 const MAPS_URL = "https://maps.app.goo.gl/3KNCS6xpPaYeVqCA9";
 const WHATSAPP_ORDER_URL = buildWhatsAppUrl("Hi Holy Pav, I'd like to place an order.");
@@ -28,7 +25,6 @@ const WHATSAPP_DELIVERY_URL = buildWhatsAppUrl(
   "Hi Holy Pav, I'd like to get my order delivered.",
 );
 
-const TRUST_ICONS = { leaf: Leaf, flame: Flame, heart: Heart } as const;
 const OCCASION_ICONS = {
   cap: GraduationCap,
   briefcase: Briefcase,
@@ -125,25 +121,55 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {dictionary.home.trustCards.map((card, index) => {
-            const Icon = TRUST_ICONS[card.icon];
+        {/* Three statements, not three cards. The writing here is the best on the
+            site; at 14px inside a bordered icon tile it was the most generic block
+            on the page. Set large, one per row, alternating cream and red, it does
+            the same job and sounds like us. */}
+        <div className="mt-12 space-y-4 sm:space-y-5">
+          {dictionary.home.trustStatements.map((item, index) => {
+            const onRed = index % 2 === 1;
             return (
               <Reveal
                 as="article"
-                key={card.title}
+                key={item.statement}
                 delay={index * 60}
-                className="sizzle group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 sm:p-8"
+                className={`rounded-3xl px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14 ${
+                  onRed ? "panel-grain" : ""
+                }`}
+                style={{
+                  backgroundColor: onRed
+                    ? "var(--brand-red-deep)"
+                    : "var(--paper-soft)",
+                }}
               >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--brand-red)] text-[var(--brand-red)]">
-                  <Icon size={22} weight="regular" />
-                </span>
-                <h3 className="mt-6 font-display text-2xl leading-tight text-[var(--ink-strong)] sm:text-[28px]">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-[1.55] text-[var(--ink-muted)]">
-                  {card.body}
+                <p
+                  className="font-display text-xs leading-none"
+                  style={{
+                    color: onRed ? "var(--brand-gold)" : "var(--brand-red)",
+                  }}
+                >
+                  0{index + 1}
                 </p>
+                <div className="mt-5 grid gap-5 lg:grid-cols-[1.4fr_0.6fr] lg:items-end lg:gap-14">
+                  <h3
+                    className="text-balance font-display text-[34px] leading-[0.95] sm:text-[48px] lg:text-[60px]"
+                    style={{
+                      color: onRed ? "var(--paper)" : "var(--ink-strong)",
+                    }}
+                  >
+                    {item.statement}
+                  </h3>
+                  <p
+                    className="max-w-sm text-[14px] leading-[1.6] lg:pb-2"
+                    style={{
+                      color: onRed
+                        ? "rgba(255, 255, 255, 0.78)"
+                        : "var(--ink-muted)",
+                    }}
+                  >
+                    {item.support}
+                  </p>
+                </div>
               </Reveal>
             );
           })}
@@ -204,10 +230,12 @@ export default function HomePage() {
           </Link>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Three columns for six items: a 4-column grid left a visibly empty
+            fourth cell on desktop. */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featuredItems.map((item, index) => (
             <Reveal key={item.id} delay={index * 60} className="h-full">
-              <MenuCard item={item} featured />
+              <MenuCard item={item} featured={signatureMenuIds.includes(item.id)} />
             </Reveal>
           ))}
         </div>
@@ -274,19 +302,34 @@ export default function HomePage() {
       </section>
 
       <section className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        {/* This frame used to say "Photo coming soon" to actual customers. Until
+            there is a real kitchen shot, it reads as a stamped poster panel
+            instead — a deliberate thing rather than a missing one. */}
         <Reveal variant="wipe" className="order-2 lg:order-1">
-          <div className="relative aspect-[5/4] w-full overflow-hidden rounded-3xl bg-[var(--paper-soft)]">
+          <div
+            className="panel-grain relative aspect-[5/4] w-full overflow-hidden rounded-3xl"
+            style={{ backgroundColor: "var(--brand-red-deep)" }}
+          >
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-[120px] leading-none text-[var(--brand-red)]/15 sm:text-[180px]">
-                Est. 2026
+              <span className="text-center font-display text-[84px] leading-[0.82] text-[var(--brand-gold)] sm:text-[120px] lg:text-[140px]">
+                EST.
+                <br />
+                2026
               </span>
             </div>
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+            <div className="absolute left-6 top-6">
+              <Ribbon size="sm">{dictionary.home.heroRibbon}</Ribbon>
+            </div>
+            <div className="absolute right-5 top-5 sm:right-6 sm:top-6">
+              <StampBadge
+                lines={[dictionary.home.heroStampLine1, dictionary.home.heroStampLine2]}
+                tone="on-dark"
+                size={96}
+              />
+            </div>
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--paper)]/70">
                 {dictionary.home.storyStamps}
-              </p>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
-                Photo coming soon
               </p>
             </div>
           </div>
