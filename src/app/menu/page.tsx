@@ -6,10 +6,10 @@ import { MenuCard } from "@/components/menu/menu-card";
 import { Ribbon } from "@/components/ui/ribbon";
 import { useApp } from "@/components/providers/app-provider";
 import {
-  featuredMenuIds,
   menuCategoryOrder,
   menuCategoryOrderKn,
   menuItems,
+  signatureMenuIds,
 } from "@/data/menu";
 import { trackEvent } from "@/lib/analytics";
 import type { MenuItem } from "@/types/commerce";
@@ -181,7 +181,7 @@ export default function MenuPage() {
                       <MenuCard
                         key={item.id}
                         item={item}
-                        featured={featuredMenuIds.includes(item.id)}
+                        featured={signatureMenuIds.includes(item.id)}
                       />
                     ))}
                   </div>

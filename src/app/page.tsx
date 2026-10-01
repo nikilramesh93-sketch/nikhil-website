@@ -3,10 +3,7 @@
 import Link from "next/link";
 import {
   Briefcase,
-  Flame,
   GraduationCap,
-  Heart,
-  Leaf,
   MoonStars,
   Scooter,
   UsersThree,
@@ -15,11 +12,12 @@ import {
 import { HeroCarousel, type HeroSlide } from "@/components/home/hero-carousel";
 import { MenuCard } from "@/components/menu/menu-card";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { Ribbon } from "@/components/ui/ribbon";
 import { StampBadge } from "@/components/ui/stamp-badge";
 import { WhatsAppIcon, buildWhatsAppUrl } from "@/components/ui/whatsapp-link";
 import { useApp } from "@/components/providers/app-provider";
-import { featuredMenuIds, menuItems } from "@/data/menu";
+import { featuredMenuIds, menuItems, signatureMenuIds } from "@/data/menu";
 
 const MAPS_URL = "https://maps.app.goo.gl/3KNCS6xpPaYeVqCA9";
 const WHATSAPP_ORDER_URL = buildWhatsAppUrl("Hi Holy Pav, I'd like to place an order.");
@@ -27,7 +25,6 @@ const WHATSAPP_DELIVERY_URL = buildWhatsAppUrl(
   "Hi Holy Pav, I'd like to get my order delivered.",
 );
 
-const TRUST_ICONS = { leaf: Leaf, flame: Flame, heart: Heart } as const;
 const OCCASION_ICONS = {
   cap: GraduationCap,
   briefcase: Briefcase,
@@ -113,7 +110,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
               {dictionary.home.trustEyebrow}
@@ -122,26 +119,58 @@ export default function HomePage() {
               {dictionary.home.trustTitle}
             </h2>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {dictionary.home.trustCards.map((card) => {
-            const Icon = TRUST_ICONS[card.icon];
+        {/* Three statements, not three cards. The writing here is the best on the
+            site; at 14px inside a bordered icon tile it was the most generic block
+            on the page. Set large, one per row, alternating cream and red, it does
+            the same job and sounds like us. */}
+        <div className="mt-12 space-y-4 sm:space-y-5">
+          {dictionary.home.trustStatements.map((item, index) => {
+            const onRed = index % 2 === 1;
             return (
-              <article
-                key={card.title}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-30px_rgba(31,20,16,0.25)] sm:p-8"
+              <Reveal
+                as="article"
+                key={item.statement}
+                delay={index * 60}
+                className={`rounded-3xl px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14 ${
+                  onRed ? "panel-grain" : ""
+                }`}
+                style={{
+                  backgroundColor: onRed
+                    ? "var(--brand-red-deep)"
+                    : "var(--paper-soft)",
+                }}
               >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--brand-red)] text-[var(--brand-red)]">
-                  <Icon size={22} weight="regular" />
-                </span>
-                <h3 className="mt-6 font-display text-2xl leading-tight text-[var(--ink-strong)] sm:text-[28px]">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-[1.55] text-[var(--ink-muted)]">
-                  {card.body}
+                <p
+                  className="font-display text-xs leading-none"
+                  style={{
+                    color: onRed ? "var(--brand-gold)" : "var(--brand-red)",
+                  }}
+                >
+                  0{index + 1}
                 </p>
-              </article>
+                <div className="mt-5 grid gap-5 lg:grid-cols-[1.4fr_0.6fr] lg:items-end lg:gap-14">
+                  <h3
+                    className="text-balance font-display text-[34px] leading-[0.95] sm:text-[48px] lg:text-[60px]"
+                    style={{
+                      color: onRed ? "var(--paper)" : "var(--ink-strong)",
+                    }}
+                  >
+                    {item.statement}
+                  </h3>
+                  <p
+                    className="max-w-sm text-[14px] leading-[1.6] lg:pb-2"
+                    style={{
+                      color: onRed
+                        ? "rgba(255, 255, 255, 0.78)"
+                        : "var(--ink-muted)",
+                    }}
+                  >
+                    {item.support}
+                  </p>
+                </div>
+              </Reveal>
             );
           })}
         </div>
@@ -151,19 +180,20 @@ export default function HomePage() {
         className="panel-grain rounded-3xl px-6 py-12 sm:px-10 sm:py-16 lg:px-14 lg:py-20"
         style={{ backgroundColor: "var(--brand-red-deep)" }}
       >
-        <div>
+        <Reveal>
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-gold)]">
             {dictionary.home.anatomyEyebrow}
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-[32px] leading-[0.95] text-[var(--paper)] sm:text-[44px] lg:text-[52px]">
             {dictionary.home.anatomyTitle}
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {dictionary.home.anatomyCallouts.map((callout, index) => (
-            <div
+            <Reveal
               key={callout.title}
+              delay={index * 60}
               className="border-t-2 pt-5"
               style={{ borderColor: "var(--brand-gold)" }}
             >
@@ -176,13 +206,13 @@ export default function HomePage() {
               <p className="mt-2 text-[13px] leading-[1.5] text-[var(--paper)]/75">
                 {callout.body}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section>
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
               {dictionary.home.bestsellerEyebrow}
@@ -198,17 +228,21 @@ export default function HomePage() {
             See full menu
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredItems.map((item) => (
-            <MenuCard key={item.id} item={item} featured />
+        {/* Three columns for six items: a 4-column grid left a visibly empty
+            fourth cell on desktop. */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredItems.map((item, index) => (
+            <Reveal key={item.id} delay={index * 60} className="h-full">
+              <MenuCard item={item} featured={signatureMenuIds.includes(item.id)} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section>
-        <div
+        <Reveal
           className="flex flex-col items-start gap-4 rounded-2xl px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8"
           style={{ backgroundColor: "var(--brand-gold)" }}
         >
@@ -236,18 +270,22 @@ export default function HomePage() {
           >
             {dictionary.home.deliverySubtitle}
           </a>
-        </div>
+        </Reveal>
       </section>
 
       <section>
-        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
+        <Reveal as="p" className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
           {dictionary.home.occasionsTitle}
-        </p>
+        </Reveal>
         <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-[var(--line-strong)] pt-6">
           {dictionary.home.occasions.map((occasion, index) => {
             const Icon = OCCASION_ICONS[occasion.icon];
             return (
-              <div key={occasion.label} className="flex items-center gap-6">
+              <Reveal
+                key={occasion.label}
+                delay={index * 60}
+                className="flex items-center gap-6"
+              >
                 {index > 0 && (
                   <span className="hidden h-8 w-px bg-[var(--line-strong)] sm:block" />
                 )}
@@ -257,32 +295,47 @@ export default function HomePage() {
                     {occasion.label}
                   </span>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
       </section>
 
       <section className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-        <div className="order-2 lg:order-1">
-          <div className="relative aspect-[5/4] w-full overflow-hidden rounded-3xl bg-[var(--paper-soft)]">
+        {/* This frame used to say "Photo coming soon" to actual customers. Until
+            there is a real kitchen shot, it reads as a stamped poster panel
+            instead — a deliberate thing rather than a missing one. */}
+        <Reveal variant="wipe" className="order-2 lg:order-1">
+          <div
+            className="panel-grain relative aspect-[5/4] w-full overflow-hidden rounded-3xl"
+            style={{ backgroundColor: "var(--brand-red-deep)" }}
+          >
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-[120px] leading-none text-[var(--brand-red)]/15 sm:text-[180px]">
-                Est. 2026
+              <span className="text-center font-display text-[84px] leading-[0.82] text-[var(--brand-gold)] sm:text-[120px] lg:text-[140px]">
+                EST.
+                <br />
+                2026
               </span>
             </div>
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+            <div className="absolute left-6 top-6">
+              <Ribbon size="sm">{dictionary.home.heroRibbon}</Ribbon>
+            </div>
+            <div className="absolute right-5 top-5 sm:right-6 sm:top-6">
+              <StampBadge
+                lines={[dictionary.home.heroStampLine1, dictionary.home.heroStampLine2]}
+                tone="on-dark"
+                size={96}
+              />
+            </div>
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--paper)]/70">
                 {dictionary.home.storyStamps}
-              </p>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-muted)]">
-                Photo coming soon
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="order-1 lg:order-2">
+        <Reveal delay={80} className="order-1 lg:order-2">
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-red)]">
             {dictionary.home.storyEyebrow}
           </p>
@@ -297,7 +350,7 @@ export default function HomePage() {
               {dictionary.home.storyCta}
             </Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

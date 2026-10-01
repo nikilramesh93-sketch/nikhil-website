@@ -303,7 +303,7 @@ Story page is on. Bigger build but lands the entire positioning. Photo slots ins
 - ✅ 2.1 Palette tightened to **brand-red + cream + mustard-gold + deep-ink**. Pastels (emerald, amber-50, fuchsia-100 etc) still defined as overrides but no longer used in components.
 - ✅ 2.2 Universal gradient killed — body is now flat cream (`var(--background)`). Three radial-gradient body bg + the `SiteShell` orange/amber/emerald blob layer both removed.
 - ✅ 2.3 Hero rebuilt — left column type-driven, right column is a confident red photo-slot with Signature Cheese Burst Vada Pav label + ₹95 mustard chip. Logo-in-frame composition is gone.
-- ✅ 2.4 Trust cards replaced with numbered card system — `01 MUMBAI RECIPES`, `02 MADE FOR THE CITY`, `03 HYGIENE` (the 03 card is the dark-red HYGIENE-style accent from Nikhil's team's reference)
+- ✅ 2.4 Trust cards replaced with a numbered statement stack — `01 Oil that hasn't seen yesterday.` / `02 Nothing here is mild by accident.` / `03 Every batch starts when you do.` Each one is a full-width row, Anton at 60px, alternating cream and deep-red-with-grain, scroll-revealed. (Corrects an earlier note here that claimed `01 MUMBAI RECIPES / 02 MADE FOR THE CITY / 03 HYGIENE` had shipped in v1.2 — it hadn't; the icon cards were still live until this change.)
 - ✅ 2.5 Typography hierarchy redone — eyebrow labels in mustard tracking-wide, display in Anton at 80px/52px/44px, body in Sora at 18px max, editorial "Est. 2026" moment in the story section
 
 **Phase v1.3 — Make it a brand:**

@@ -566,8 +566,28 @@ export const menuCategoryOrderKn = [
   "ಹೋಲಿ ಕಾಂಬೊಸ್",
 ] as const;
 
+/**
+ * What the homepage shows before someone opens the menu.
+ *
+ * Six, not three: the thing a hungry visitor wants is more food sooner, and
+ * three cards behind a text link was asking them to work for it. One pick per
+ * category so the spread reads as a kitchen rather than a vada pav stall, and
+ * every id here has a real photo — a "photo coming soon" tile on the homepage
+ * does more damage than a shorter row.
+ */
 export const featuredMenuIds = [
   "og-vada-pav",
+  "cheese-burst-vada-pav",
   "butter-dabeli",
   "butter-pav-bhaji",
+  "onion-krispers",
+  "og-combo",
 ];
+
+/**
+ * What earns the "Signature" ribbon — deliberately kept separate from
+ * featuredMenuIds. These two used to be one list, so widening the homepage row
+ * would have stamped Signature on six items and the badge would have stopped
+ * meaning anything.
+ */
+export const signatureMenuIds = ["og-vada-pav", "butter-dabeli", "butter-pav-bhaji"];
